@@ -13,8 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - chore-add CODEOWNERS file to define code ownership(pr [#6])
 - docs-add metadata to Cargo.toml including description, license, documentation, and repository links(pr [#7])
 - chore-add release configuration file with signing and branch restrictions(pr [#8])
+- Create FUNDING.yml(pr [#9])
 
 [#3]: https://github.com/jerus-org/captval/pull/3
 [#6]: https://github.com/jerus-org/captval/pull/6
 [#7]: https://github.com/jerus-org/captval/pull/7
 [#8]: https://github.com/jerus-org/captval/pull/8
+[#9]: https://github.com/jerus-org/captval/pull/9
