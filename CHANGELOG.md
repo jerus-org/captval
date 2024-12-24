@@ -20,6 +20,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - circleci: correct publish flag in config file(pr [#11])
 
+### Security
+
+- Dependencies: update dependency toolkit to v1.23.0(pr [#4])
+
 [#3]: https://github.com/jerus-org/captval/pull/3
 [#6]: https://github.com/jerus-org/captval/pull/6
 [#7]: https://github.com/jerus-org/captval/pull/7
@@ -27,3 +31,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#9]: https://github.com/jerus-org/captval/pull/9
 [#10]: https://github.com/jerus-org/captval/pull/10
 [#11]: https://github.com/jerus-org/captval/pull/11
+[#4]: https://github.com/jerus-org/captval/pull/4
