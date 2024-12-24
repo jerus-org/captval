@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - chore-add release configuration file with signing and branch restrictions(pr [#8])
 - Create FUNDING.yml(pr [#9])
 - refactor(circleci)-remove custom commands and jobs in favour of toolkit orbs(pr [#10])
+- chore(circleci)-update toolkit orb to version 1.23.0(pr [#12])
 
 ### Fixed
 
@@ -27,3 +28,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#9]: https://github.com/jerus-org/captval/pull/9
 [#10]: https://github.com/jerus-org/captval/pull/10
 [#11]: https://github.com/jerus-org/captval/pull/11
+[#12]: https://github.com/jerus-org/captval/pull/12
