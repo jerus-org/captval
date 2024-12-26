@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - refactor(circleci)-remove custom commands and jobs in favour of toolkit orbs(pr [#10])
 - chore(circleci)-update toolkit orb to version 1.23.0(pr [#12])
 - ci(circleci)-add when_cargo_release parameter to config file(pr [#13])
+- chore-add first-release configuration file for release process(pr [#14])
 
 ### Fixed
 
@@ -35,3 +36,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#11]: https://github.com/jerus-org/captval/pull/11
 [#4]: https://github.com/jerus-org/captval/pull/4
 [#13]: https://github.com/jerus-org/captval/pull/13
+[#14]: https://github.com/jerus-org/captval/pull/14
