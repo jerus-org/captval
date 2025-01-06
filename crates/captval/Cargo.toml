@@ -1,11 +1,12 @@
 [package]
 name = "captval"
 version = "0.1.0"
-edition = "2021"
 description = "Captcha validators"
 license = "MIT"
 documentation = "https://docs.rs/captval"
 repository = "https://github.com/jerus-org/captval"
-
+edition.workspace = true
+rust-version.workspace = true
+publish = true
 
 [dependencies]

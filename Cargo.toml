@@ -1,9 +1,9 @@
 [workspace]
 resolver = "2"
-members = ["captval"]
+members = ["crates/captval"]
 
 [workspace.package]
-rust-version = "1.60.0"
+rust-version = "1.81"
 edition = "2021"
 publish = false
 
