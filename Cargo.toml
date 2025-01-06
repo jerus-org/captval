@@ -1,11 +1,13 @@
-[package]
-name = "captval"
-version = "0.1.0"
+[workspace]
+resolver = "2"
+members = ["captval"]
+
+[workspace.package]
+rust-version = "1.60.0"
 edition = "2021"
-description = "Captcha validators"
-license = "MIT"
-documentation = "https://docs.rs/captval"
-repository = "https://github.com/jerus-org/captval"
+publish = false
 
+[workspace.dependencies]
 
-[dependencies]
+[profile.release]
+opt-level = "s"
