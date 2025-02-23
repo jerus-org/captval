@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Dependencies: update dependency toolkit to v2(pr [#15])
 - Dependencies: update dependency toolkit to v2.0.1(pr [#18])
 - Dependencies: update dependency toolkit to v2.0.4(pr [#19])
+- Dependencies: update dependency toolkit to v2.0.7(pr [#20])
 
 ## [0.1.0] - 2024-12-27
 
@@ -55,5 +56,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#17]: https://github.com/jerus-org/captval/pull/17
 [#18]: https://github.com/jerus-org/captval/pull/18
 [#19]: https://github.com/jerus-org/captval/pull/19
+[#20]: https://github.com/jerus-org/captval/pull/20
 [Unreleased]: https://github.com/jerus-org/captval/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/jerus-org/captval/releases/tag/v0.1.0
