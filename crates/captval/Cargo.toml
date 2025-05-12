@@ -10,3 +10,27 @@ rust-version.workspace = true
 publish = true
 
 [dependencies]
+hex = { workspace = true, optional = true }
+reqwest.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+serde_urlencoded.workspace = true
+thiserror.workspace = true
+tracing = { workspace = true, optional = true }
+url.workspace = true
+uuid.workspace = true
+
+[dev-dependencies]
+chrono.workspace = true
+claims.workspace = true
+mockd = { workspace = true }
+rand.workspace = true
+serde_test.workspace = true
+tokio.workspace = true
+tracing-test.workspace = true
+wiremock.workspace = true
+
+[features]
+trace = ["dep:tracing"]
+enterprise = []
+ext = ["dep:hex"]
