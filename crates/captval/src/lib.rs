@@ -279,22 +279,22 @@
 //!
 //! This version of hcaptcha requires Rust v1.81 or later.
 
-mod captcha;
-mod client;
-#[doc(hidden)]
-pub(crate) mod domain;
-mod error;
-mod hcaptcha;
-mod request;
-mod response;
+// mod captcha;
+// mod client;
+// #[doc(hidden)]
+// pub(crate) mod domain;
+// mod error;
+// mod hcaptcha;
+// mod request;
+// mod response;
 
-pub use captcha::Captcha;
-pub use client::Client;
-pub use client::VERIFY_URL;
-pub use error::Code;
-pub use error::Error;
-pub use request::Request;
-pub use response::Response;
+// pub use captcha::Captcha;
+// pub use client::Client;
+// pub use client::VERIFY_URL;
+// pub use error::Code;
+// pub use error::Error;
+// pub use request::Request;
+// pub use response::Response;
 
-pub use crate::hcaptcha::Hcaptcha;
+// pub use crate::hcaptcha::Hcaptcha;
 // pub use hcaptcha_derive::*;
