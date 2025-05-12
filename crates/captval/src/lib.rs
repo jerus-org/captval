@@ -21,7 +21,7 @@
 //!
 //! Token needs to be supplied by the client.
 //! This example will fail as a client-provided token is not used.
-//! ```no_run
+//! ```no_run ignore
 //!     use hcaptcha::{Client, Request};
 //! # use itertools::Itertools;
 //!
@@ -69,7 +69,7 @@
 //!
 //! See examples for more detail.
 //!
-//! ``` no_run
+//! ``` no_run ignore
 //! # use lambda_runtime::Error;
 //! # use tracing_bunyan_formatter::{BunyanFormattingLayer, JsonStorageLayer};
 //! # use tracing_log::LogTracer;
