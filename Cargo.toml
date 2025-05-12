@@ -3,7 +3,7 @@ resolver = "2"
 members = ["crates/captval"]
 
 [workspace.package]
-rust-version = "1.81"
+rust-version = "1.82"
 edition = "2021"
 publish = false
 
