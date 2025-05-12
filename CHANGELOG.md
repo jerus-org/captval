@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- ✨ add error handling module(pr [#26])
+
 ### Changed
 
 - ci(circleci)-update workflows to include save_next_version job and dependencies(pr [#16])
@@ -65,5 +69,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#22]: https://github.com/jerus-org/captval/pull/22
 [#24]: https://github.com/jerus-org/captval/pull/24
 [#25]: https://github.com/jerus-org/captval/pull/25
+[#26]: https://github.com/jerus-org/captval/pull/26
 [Unreleased]: https://github.com/jerus-org/captval/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/jerus-org/captval/releases/tag/v0.1.0
