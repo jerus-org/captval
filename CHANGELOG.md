@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - ci(circleci)-update workflows to include save_next_version job and dependencies(pr [#16])
 - refactor-restructure project to use workspace and remove unused files(pr [#17])
+- 👷 ci(circleci)-update circleci-toolkit orb version(pr [#24])
 
 ### Security
 
@@ -61,5 +62,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#20]: https://github.com/jerus-org/captval/pull/20
 [#21]: https://github.com/jerus-org/captval/pull/21
 [#22]: https://github.com/jerus-org/captval/pull/22
+[#24]: https://github.com/jerus-org/captval/pull/24
 [Unreleased]: https://github.com/jerus-org/captval/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/jerus-org/captval/releases/tag/v0.1.0
