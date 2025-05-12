@@ -3,11 +3,11 @@
 #![cfg_attr(docsrs, feature(rustdoc_missing_doc_code_examples))]
 #![cfg_attr(docsrs, warn(rustdoc::invalid_codeblock_attributes))]
 
-//! Hcaptcha
+//! captval
 //!
 //! # Build the request and verify
 //!
-//! Initialise a client using the [`Client`] builder to submit requests to the hcaptcha service validation.
+//! Initialise a client using the [`Client`] builder to submit requests to the captval service validation.
 //!
 //! For each request build the request using the [`Request`] builder.
 //!
@@ -22,11 +22,11 @@
 //! Token needs to be supplied by the client.
 //! This example will fail as a client-provided token is not used.
 //! ```no_run ignore
-//!     use hcaptcha::{Client, Request};
+//!     use captval::{Client, Request};
 //! # use itertools::Itertools;
 //!
 //! # #[tokio::main]
-//! # async fn main() -> Result<(), hcaptcha::Error> {
+//! # async fn main() -> Result<(), captval::Error> {
 //! #   let secret = "0x123456789abcde0f123456789abcdef012345678".to_string();
 //! #   let captcha = Captcha::new(&random_response())?
 //! #       .set_remoteip(&mockd::internet::ipv4_address())?
@@ -51,7 +51,7 @@
 //!     println!("\tScore: {:?}\n\tReasons: {:?}", score, score_reasons);
 //!     # Ok(())
 //! # }
-//! # use hcaptcha::Captcha;
+//! # use captval::Captcha;
 //! # use rand::distr::Alphanumeric;
 //! # use rand::{rng, Rng};
 //! # use std::iter;
@@ -82,7 +82,7 @@
 //! #         #[derive(Error, Debug)]
 //! #         pub enum ContactError {
 //! #             #[error("{0}")]
-//! #             Hcaptcha(#[from] hcaptcha::Error),
+//! #             Hcaptcha(#[from] captval::Error),
 //! #             #[error("{0}")]
 //! #             Json(#[from] serde_json::Error),
 //! #         }
@@ -154,9 +154,9 @@
 //! #         }
 //! #     }
 //!
-//! #     const HCAPTCHA_SECRET: &str = "/hcaptcha/secret";
+//! #     const HCAPTCHA_SECRET: &str = "/captval/secret";
 //! #
-//! #     use hcaptcha::{Captcha, Client, Request};
+//! #     use captval::{Captcha, Client, Request};
 //! #     use lambda_runtime::{Context, Error};
 //! #     use send::ContactForm;
 //! #     use serde::{Deserialize, Serialize};
@@ -200,9 +200,9 @@
 //!         let body_str = e.body.unwrap_or_else(|| "".to_owned());
 //!         let captcha: Captcha = serde_json::from_str(&body_str)?;
 //!
-//!         let hcaptcha_secret = param::get_parameter(HCAPTCHA_SECRET).await?;
+//!         let captval_secret = param::get_parameter(HCAPTCHA_SECRET).await?;
 //!
-//!         let request = Request::new(&hcaptcha_secret,
+//!         let request = Request::new(&captval_secret,
 //!             captcha)?;
 //!         
 //!         let client = Client::new();
@@ -265,7 +265,7 @@
 //!
 //! ```toml
 //! [dependency]
-//! hcaptcha = { version = "3.0.26", default-features = false }
+//! captval = { version = "3.0.26", default-features = false }
 //! ```
 //!
 //! The following feature flags are available:
@@ -277,14 +277,14 @@
 //!
 //! ## Rust Version
 //!
-//! This version of hcaptcha requires Rust v1.82 or later.
+//! This version of captval requires Rust v1.82 or later.
 
 // mod captcha;
 // mod client;
 // #[doc(hidden)]
 // pub(crate) mod domain;
 // mod error;
-// mod hcaptcha;
+// mod captval;
 // mod request;
 // mod response;
 
@@ -296,5 +296,5 @@
 // pub use request::Request;
 // pub use response::Response;
 
-// pub use crate::hcaptcha::Hcaptcha;
-// pub use hcaptcha_derive::*;
+// pub use crate::captval::Hcaptcha;
+// pub use captval_derive::*;
