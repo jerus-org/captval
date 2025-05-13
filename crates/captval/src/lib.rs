@@ -286,8 +286,8 @@
 // mod captval;
 mod error;
 // mod request;
-// mod response;
 mod hcaptcha;
+mod response;
 
 // pub use captcha::Captcha;
 // pub use client::Client;
@@ -295,7 +295,7 @@ mod hcaptcha;
 pub use error::Error;
 pub use hcaptcha::Code;
 // pub use request::Request;
-// pub use response::Response;
+pub use response::Response;
 
 // pub use crate::captval::Hcaptcha;
 // pub use captval_derive::*;
