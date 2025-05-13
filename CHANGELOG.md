@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 👷 ci(circleci)-update circleci-toolkit orb version(pr [#24])
 - 📝 docs(lib)-add comprehensive documentation for hcaptcha(pr [#25])
 - ♻️ refactor(lib)-enable error module(pr [#27])
+- Add-Captval-trait-for-validation(pr [#31])
 
 ### Security
 
@@ -79,5 +80,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#29]: https://github.com/jerus-org/captval/pull/29
 [#30]: https://github.com/jerus-org/captval/pull/30
 [#30]: https://github.com/jerus-org/captval/pull/30
+[#31]: https://github.com/jerus-org/captval/pull/31
 [Unreleased]: https://github.com/jerus-org/captval/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/jerus-org/captval/releases/tag/v0.1.0
