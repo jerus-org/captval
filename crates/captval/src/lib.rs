@@ -287,6 +287,7 @@
 mod error;
 // mod request;
 mod hcaptcha;
+mod remoteip;
 mod response;
 
 // pub use captcha::Captcha;
@@ -296,6 +297,8 @@ pub use error::Error;
 pub use hcaptcha::Code;
 // pub use request::Request;
 pub use response::Response;
+
+// pub(crate) use remoteip::Remoteip;
 
 // pub use crate::captval::Hcaptcha;
 // pub use captval_derive::*;
