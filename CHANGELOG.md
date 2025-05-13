@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ✨ add domain modules and conditional feature support (pr [#30])
 - ✨ add captcha struct for captcha data(pr [#33])
 - ✨ add request module for captval API(pr [#34])
+- ✨ add new Captval client implementation(pr [#35])
 
 ### Changed
 
@@ -88,5 +89,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#33]: https://github.com/jerus-org/captval/pull/33
 [#33]: https://github.com/jerus-org/captval/pull/33
 [#34]: https://github.com/jerus-org/captval/pull/34
+[#35]: https://github.com/jerus-org/captval/pull/35
 [Unreleased]: https://github.com/jerus-org/captval/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/jerus-org/captval/releases/tag/v0.1.0
