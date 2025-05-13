@@ -283,16 +283,17 @@
 // mod client;
 // #[doc(hidden)]
 // pub(crate) mod domain;
-mod error;
 // mod captval;
+mod error;
 // mod request;
 // mod response;
+mod hcaptcha;
 
 // pub use captcha::Captcha;
 // pub use client::Client;
 // pub use client::VERIFY_URL;
-// pub use error::Code;
-// pub use error::Error;
+pub use error::Error;
+pub use hcaptcha::Code;
 // pub use request::Request;
 // pub use response::Response;
 

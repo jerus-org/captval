@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - ✨ add error handling module(pr [#26])
+- ✨ add error code mapping for captval API(pr [#28])
 
 ### Changed
 
@@ -72,5 +73,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#25]: https://github.com/jerus-org/captval/pull/25
 [#26]: https://github.com/jerus-org/captval/pull/26
 [#27]: https://github.com/jerus-org/captval/pull/27
+[#28]: https://github.com/jerus-org/captval/pull/28
 [Unreleased]: https://github.com/jerus-org/captval/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/jerus-org/captval/releases/tag/v0.1.0
