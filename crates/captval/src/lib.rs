@@ -280,12 +280,12 @@
 //! This version of captval requires Rust v1.82 or later.
 
 mod captcha;
-// mod client;
 mod captval;
+// mod client;
 mod error;
 mod hcaptcha;
 mod remoteip;
-// mod request;
+mod request;
 mod response;
 
 pub use captcha::Captcha;
@@ -301,10 +301,4 @@ pub use crate::captval::Captval;
 // pub use captval_derive::*;
 
 #[cfg(feature = "hcaptcha")]
-pub use hcaptcha::ClientResponse;
-#[cfg(feature = "hcaptcha")]
-pub use hcaptcha::Code;
-// #[cfg(feature = "hcaptcha")]
-// pub(crate) use hcaptcha::Secret;
-#[cfg(feature = "hcaptcha")]
-pub(crate) use hcaptcha::Sitekey;
+pub use hcaptcha::*;
