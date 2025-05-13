@@ -21,3 +21,6 @@ pub(crate) use secret::Secret;
 pub(crate) use secret_ext::Secret;
 #[allow(unused_imports)]
 pub(crate) use sitekey::Sitekey;
+
+/// Endpoint url for the Hcaptcha siteverify API.
+pub const VERIFY_URL: &str = "https://api.hcaptcha.com/siteverify";
