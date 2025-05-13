@@ -13,7 +13,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ✨ add error code mapping for captval API(pr [#28])
 - ✨ add response structure for captval API(pr [#29])
 - ✨ add domain modules and conditional feature support (pr [#30])
-- ✨ add captcha struct for Hcaptcha data(pr [#33])
 
 ### Changed
 
