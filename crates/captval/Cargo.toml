@@ -31,6 +31,8 @@ tracing-test.workspace = true
 wiremock.workspace = true
 
 [features]
+default = ["hcaptcha"]
 trace = ["dep:tracing"]
 enterprise = []
 ext = ["dep:hex"]
+hcaptcha = []
