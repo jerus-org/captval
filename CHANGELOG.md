@@ -12,7 +12,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ✨ add error handling module(pr [#26])
 - ✨ add error code mapping for captval API(pr [#28])
 - ✨ add response structure for captval API(pr [#29])
-- ✨ add domain modules and conditional feature support(pr [#30])
 
 ### Changed
 
