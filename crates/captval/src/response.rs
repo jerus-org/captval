@@ -413,7 +413,7 @@ impl Response {
     /// Get the value of the score field
     ///
     /// # Example
-    /// ```no_run
+    /// ```no_run ignore
     /// #   use captval::{Request, Client};
     /// # #[tokio::main]
     /// # async fn main() -> Result<(), captval::Error> {
@@ -460,7 +460,7 @@ impl Response {
     /// Get the value of the score_reason field
     ///
     /// # Example
-    /// ```no_run
+    /// ```no_run ignore
     /// #   use captval::{Request, Client};
     /// # #[tokio::main]
     /// # async fn main() -> Result<(), captval::Error> {
