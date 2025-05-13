@@ -26,14 +26,14 @@
 
 use crate::{ClientResponse, Error, Remoteip, Sitekey};
 
-/// Capture the Hcaptcha data coming from the client.
+/// Capture the Captcha data coming from the client.
 #[derive(Debug, Default, Clone, serde::Serialize, serde::Deserialize)]
 pub struct Captcha {
-    /// The response string collected by client from Hcaptcha.
+    /// The response string collected by client.
     pub(crate) response: ClientResponse,
-    /// The remoteip of the client submitting the request.
+    /// The remoteip of the client.
     pub(crate) remoteip: Option<Remoteip>,
-    /// The sitekey submitted to Hcaptcha by the client.
+    /// The sitekey from the client.
     pub(crate) sitekey: Option<Sitekey>,
 }
 
@@ -176,7 +176,7 @@ impl Captcha {
         Ok(self.clone())
     }
 
-    /// Update the remoteip field in Captcha.
+    /// Update the sitekey field in Captcha.
     ///
     /// # Input
     ///
