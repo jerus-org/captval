@@ -281,7 +281,7 @@
 
 mod captcha;
 mod captval;
-// mod client;
+mod client;
 mod error;
 mod hcaptcha;
 mod remoteip;
@@ -289,7 +289,7 @@ mod request;
 mod response;
 
 pub use captcha::Captcha;
-// pub use client::Client;
+pub use client::Client;
 // pub use client::VERIFY_URL;
 pub use error::Error;
 pub use request::Request;
