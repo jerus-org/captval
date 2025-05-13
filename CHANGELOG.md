@@ -28,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ♻️ refactor(hcaptcha)-clean up unused code and comments(pr [#32])
 - 📝 docs(README)-add initial README for captval library(pr [#36])
 - 📝 docs(funding)-add FUNDING.yml configuration(pr [#37])
+- 📝 docs(changelog)-add changelog symlinks for sub-crates(pr [#38])
 
 ### Security
 
@@ -94,5 +95,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#35]: https://github.com/jerus-org/captval/pull/35
 [#36]: https://github.com/jerus-org/captval/pull/36
 [#37]: https://github.com/jerus-org/captval/pull/37
+[#38]: https://github.com/jerus-org/captval/pull/38
 [Unreleased]: https://github.com/jerus-org/captval/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/jerus-org/captval/releases/tag/v0.1.0
