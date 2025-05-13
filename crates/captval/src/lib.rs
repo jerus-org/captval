@@ -283,7 +283,7 @@
 // mod client;
 // #[doc(hidden)]
 // pub(crate) mod domain;
-// mod captval;
+mod captval;
 mod error;
 // mod request;
 mod hcaptcha;
@@ -300,5 +300,5 @@ pub use response::Response;
 
 // pub(crate) use remoteip::Remoteip;
 
-// pub use crate::captval::Hcaptcha;
+pub use crate::captval::Captval;
 // pub use captval_derive::*;
