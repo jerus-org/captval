@@ -9,8 +9,11 @@ mod sitekey;
 // pub(crate) use client_response::ClientResponse;
 pub use code::Code;
 
+#[doc(hidden)]
 #[cfg(not(feature = "ext"))]
 pub(crate) use secret::Secret;
-// #[cfg(feature = "ext")]
-// pub(crate) use secret_ext::Secret;
-// pub(crate) use sitekey::Sitekey;
+#[doc(hidden)]
+#[cfg(feature = "ext")]
+pub(crate) use secret_ext::Secret;
+#[doc(hidden)]
+pub(crate) use sitekey::Sitekey;
