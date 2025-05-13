@@ -292,7 +292,7 @@ pub use captcha::Captcha;
 // pub use client::Client;
 // pub use client::VERIFY_URL;
 pub use error::Error;
-// pub use request::Request;
+pub use request::Request;
 pub use response::Response;
 
 pub(crate) use remoteip::Remoteip;
