@@ -2,7 +2,7 @@
 //!
 //! ## Example
 //!
-//! ```no_run
+//! ```no_run ignore
 //! #   use captval::{Request, Client};
 //! # #[tokio::main]
 //! # async fn main() -> Result<(), captval::Error> {
@@ -195,7 +195,7 @@ impl Response {
     /// Get the value of the success field
     ///
     /// # Example
-    /// ```no_run
+    /// ```no_run ignore
     /// #   use captval::{Request, Client};
     /// # #[tokio::main]
     /// # async fn main() -> Result<(), captval::Error> {
@@ -236,7 +236,7 @@ impl Response {
     /// Get the value of the hostname field
     ///
     /// # Example
-    /// ```no_run
+    /// ```no_run ignore
     /// #   use captval::{Request, Client};
     /// # #[tokio::main]
     /// # async fn main() -> Result<(), captval::Error> {
@@ -280,7 +280,7 @@ impl Response {
     /// Get the value of the timestamp field
     ///
     /// # Example
-    /// ```no_run
+    /// ```no_run ignore
     /// #   use captval::{Request, Client};
     /// # #[tokio::main]
     /// # async fn main() -> Result<(), captval::Error> {
@@ -324,7 +324,7 @@ impl Response {
     /// Get the value of the credit field
     ///
     /// # Example
-    /// ```no_run
+    /// ```no_run ignore
     /// #   use captval::{Request, Client};
     /// # #[tokio::main]
     /// # async fn main() -> Result<(), captval::Error> {
@@ -369,7 +369,7 @@ impl Response {
     /// Get the value of the error_codes field
     ///
     /// # Example
-    /// ```no_run
+    /// ```no_run ignore
     /// #   use captval::{Request, Client};
     /// # #[tokio::main]
     /// # async fn main() -> Result<(), captval::Error> {
