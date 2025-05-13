@@ -281,8 +281,6 @@
 
 // mod captcha;
 // mod client;
-// #[doc(hidden)]
-// pub(crate) mod domain;
 mod captval;
 mod error;
 // mod request;
