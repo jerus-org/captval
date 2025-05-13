@@ -283,7 +283,7 @@
 // mod client;
 // #[doc(hidden)]
 // pub(crate) mod domain;
-// mod error;
+mod error;
 // mod captval;
 // mod request;
 // mod response;
