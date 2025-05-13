@@ -21,12 +21,12 @@ tracing = "0.1.41"
 url = "2.5.4"
 uuid = "1.16.0"
 
+tokio = { version = "1.45.0", features = ["rt", "rt-multi-thread", "macros"] }
 chrono = "0.4.41"
 claims = "0.8.0"
 mockd = { version = "0.4.47", features = ["internet", "unique", "words"] }
 rand = "0.9.1"
 serde_test = "1.0.177"
-tokio = { version = "1.45.0", features = ["rt", "macros"] }
 tracing-test = "0.2.5"
 wiremock = "0.6.3"
 
