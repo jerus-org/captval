@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ✨ add request module for captval API(pr [#34])
 - ✨ add new Captval client implementation(pr [#35])
 - ✨ add new captval_derive crate(pr [#40])
+- ✨ add derive macro for Captval trait(pr [#42])
 
 ### Changed
 
@@ -102,5 +103,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#39]: https://github.com/jerus-org/captval/pull/39
 [#40]: https://github.com/jerus-org/captval/pull/40
 [#41]: https://github.com/jerus-org/captval/pull/41
+[#42]: https://github.com/jerus-org/captval/pull/42
 [Unreleased]: https://github.com/jerus-org/captval/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/jerus-org/captval/releases/tag/v0.1.0
