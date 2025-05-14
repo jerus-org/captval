@@ -161,7 +161,6 @@ fn impl_captval(ast: &DeriveInput) -> TokenStream {
                     };
                 }
 
-                let mut captcha = String::new();
                 #captcha
                 #remoteip
                 #sitekey
