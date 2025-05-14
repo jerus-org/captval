@@ -35,6 +35,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 🔧 chore(release)-add release configuration file(pr [#41])
 - ✅ test(captval_derive)-add basic test cases for macro expansion(pr [#43])
 - ♻️ refactor(captval_derive)-remove unused variable(pr [#44])
+- ✅ test(expand)-add test for expanded contact form(pr [#45])
 
 ### Security
 
@@ -108,5 +109,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#42]: https://github.com/jerus-org/captval/pull/42
 [#43]: https://github.com/jerus-org/captval/pull/43
 [#44]: https://github.com/jerus-org/captval/pull/44
+[#45]: https://github.com/jerus-org/captval/pull/45
 [Unreleased]: https://github.com/jerus-org/captval/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/jerus-org/captval/releases/tag/v0.1.0
