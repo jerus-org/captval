@@ -40,14 +40,19 @@
 //!
 //!     let response = client.verify(request).await?;
 //!
+//!#     #[cfg(feature = "enterprise")]
 //!     let score = match &response.score() {
 //!         Some(v) => *v,
 //!         None => 0.0,
 //!     };
+//!
+//!#     #[cfg(feature = "enterprise")]
 //!     let score_reasons = match &response.score_reason() {
 //!         Some(v) => v.iter().join(", "),
 //!         None => "".to_owned(),
 //!     };
+//!
+//!#     #[cfg(feature = "enterprise")]
 //!     println!("\tScore: {:?}\n\tReasons: {:?}", score, score_reasons);
 //!     # Ok(())
 //! # }
@@ -90,8 +95,15 @@
 //! #
 //! #     mod param {
 //! #         use super::error::ContactError;
+//! #         #[cfg(feature = "trace")]
 //! #         use tracing::instrument;
+//! #         #[cfg(feature = "trace")]
 //! #         #[instrument(name = "get the secret key from parameter store")]
+//! #         pub async fn get_parameter(key: &str) -> Result<String, ContactError> {
+//! #             // Extract the secret key from your parameter store
+//! #             Ok("0x123456789abcedf0123456789abcedf012345678".to_owned())
+//! #         }
+//! #         #[cfg(not(feature = "trace"))]
 //! #         pub async fn get_parameter(key: &str) -> Result<String, ContactError> {
 //! #             // Extract the secret key from your parameter store
 //! #             Ok("0x123456789abcedf0123456789abcedf012345678".to_owned())
@@ -101,8 +113,9 @@
 //! #     mod record {
 //! #         use super::error::ContactError;
 //! #         use super::send::ContactForm;
+//! #         #[cfg(feature = "trace")]
 //! #         use tracing::instrument;
-//! #
+//! #         #[cfg(feature = "trace")]
 //! #         #[instrument(
 //! #     name = "Write record to database"
 //! #     skip(form)
@@ -112,11 +125,17 @@
 //! #             // Write the contact form data to dynamodb
 //! #             Ok(())
 //! #         }
+//! #         #[cfg(not(feature = "trace"))]
+//! #         pub async fn write(form: &ContactForm) -> Result<(), ContactError> {
+//! #             // Write the contact form data to dynamodb
+//! #             Ok(())
+//! #         }
 //! #     }
 //! #
 //! #     mod send {
 //! #         use super::error::ContactError;
 //! #         use serde::{Deserialize, Serialize};
+//! #         #[cfg(feature = "trace")]
 //! #         use tracing::instrument;
 //! #
 //! #         #[derive(Deserialize, Serialize, Clone, Debug, Default)]
@@ -135,6 +154,7 @@
 //! #             pub site: String,
 //! #         }
 //! #
+//! #         #[cfg(feature = "trace")]
 //! #         #[instrument(name = "send notification to info mailbox", skip(_contact_form))]
 //! #         pub async fn notify_office(
 //! #             _contact_form: &ContactForm,
@@ -144,7 +164,25 @@
 //! #             Ok(())
 //! #         }
 //! #
+//! #         #[cfg(not(feature = "trace"))]
+//! #         pub async fn notify_office(
+//! #             _contact_form: &ContactForm,
+//! #         ) -> Result<(), ContactError> {
+//! #             // Construct email and send message to the office info mailbox
+//! #
+//! #             Ok(())
+//! #         }
+//! #
+//! #         #[cfg(feature = "trace")]
 //! #         #[instrument(name = "Send notification to the contact", skip(_contact_form))]
+//! #         pub async fn notify_contact(
+//! #             _contact_form: &ContactForm,
+//! #         ) -> Result<(), ContactError> {
+//! #             // Construct and send email to the contact
+//! #
+//! #             Ok(())
+//! #         }
+//! #         #[cfg(not(feature = "trace"))]
 //! #         pub async fn notify_contact(
 //! #             _contact_form: &ContactForm,
 //! #         ) -> Result<(), ContactError> {
@@ -161,6 +199,7 @@
 //! #     use send::ContactForm;
 //! #     use serde::{Deserialize, Serialize};
 //! #     use tokio::join;
+//! #     #[cfg(feature = "trace")]
 //! #     use tracing::{debug, error};
 //! #
 //! #     #[derive(Deserialize, Serialize, Clone, Debug, Default)]
@@ -195,6 +234,7 @@
 //! #
 //! #
 //!     pub async fn my_handler(e: CustomEvent, _c: Context) -> Result<CustomOutput,  Error> {
+//! #       #[cfg(feature = "trace")]
 //!         debug!("The event logged is: {:?}", e);
 //!
 //!         let body_str = e.body.unwrap_or_else(|| "".to_owned());
@@ -218,16 +258,19 @@
 //!             join!(notify_office_fut, notify_contact_fut, write_fut);
 //!
 //!         if let Err(e) = notify_contact {
+//!#            #[cfg(feature = "trace")]
 //!             error!("Notification to the contact not sent: {}", e);
 //!             return Err("Notification not sent".into());
 //!         }
 //!
 //!         if let Err(e) = notify_office {
+//!#            #[cfg(feature = "trace")]
 //!             error!("Notification to the office not sent: {}", e);
 //!             return Err("Info not sent to office".into());
 //!         }
 //!
 //!         if let Err(e) = write {
+//!#            #[cfg(feature = "trace")]
 //!             error!("Contact information not written to database: {}", e);
 //!         }
 //!
@@ -251,6 +294,7 @@
 //! #        ))
 //! #        .with(JsonStorageLayer)
 //! #        .with(bunyan_formatting_layer);
+//! #    #[cfg(feature = "trace")]
 //! #    tracing::subscriber::set_global_default(subscriber)?;
 //!
 //!     lambda_runtime::run(lambda_runtime::handler_fn(handler::my_handler)).await?;
