@@ -21,7 +21,7 @@
 //!
 //! Token needs to be supplied by the client.
 //! This example will fail as a client-provided token is not used.
-//! ```no_run ignore
+//! ```no_run
 //!     use captval::{Client, Request};
 //! # use itertools::Itertools;
 //!
@@ -38,7 +38,7 @@
 //!
 //!     let client = Client::new();
 //!
-//!     let response = client.verify_client_response(request).await?;
+//!     let response = client.verify(request).await?;
 //!
 //!     let score = match &response.score() {
 //!         Some(v) => *v,
@@ -69,7 +69,7 @@
 //!
 //! See examples for more detail.
 //!
-//! ``` no_run ignore
+//! ``` no_run
 //! # use lambda_runtime::Error;
 //! # use tracing_bunyan_formatter::{BunyanFormattingLayer, JsonStorageLayer};
 //! # use tracing_log::LogTracer;
@@ -206,7 +206,7 @@
 //!             captcha)?;
 //!         
 //!         let client = Client::new();
-//!         let _response = client.verify_client_response(request).await?;
+//!         let _response = client.verify(request).await?;
 //!
 //!         let contact_form: ContactForm = serde_json::from_str(&body_str)?;
 //!
