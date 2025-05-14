@@ -43,7 +43,7 @@ jobs:
       - run: cargo +stable --version
       - run:
           name: Running test with features `<<parameters.features>>`
-          command: "cargo +stable test --no-defauult-features <<parameters.features>>"
+          command: "cargo +stable test --no-default-features <<parameters.features>>"
 
 workflows:
   check_last_commit:
@@ -114,6 +114,8 @@ workflows:
             - toolkit/idiomatic_rust
             - toolkit/code_coverage
             - toolkit/security
+            - toolkit/test_wasm
+            - test-features
           context:
             - release
             - bot-check
