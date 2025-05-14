@@ -38,7 +38,7 @@
 //!
 //!     let client = Client::new();
 //!
-//!     let response = client.verify_client_response(request).await?;
+//!     let response = client.verify(request).await?;
 //!
 //!     let score = match &response.score() {
 //!         Some(v) => *v,
