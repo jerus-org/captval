@@ -8,7 +8,12 @@ edition = "2021"
 publish = false
 
 [workspace.dependencies]
+env_logger = "0.11.8"
 hex = "0.4.3"
+itertools = "0.14.0"
+proc-macro2 = "1.0.95"
+proc-macro-error2 = "2.0.1"
+quote = "1.0.40"
 reqwest = { version = "0.12.15", default-features = false, features = [
     "json",
     "http2",
@@ -16,24 +21,21 @@ reqwest = { version = "0.12.15", default-features = false, features = [
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0.140"
 serde_urlencoded = "0.7.1"
+syn = "2.0.39"
 thiserror = "2.0.12"
 tracing = "0.1.41"
 url = "2.5.4"
 uuid = "1.16.0"
-syn = "2.0.39"
-quote = "1.0.40"
-proc-macro2 = "1.0.95"
-proc-macro-error2 = "2.0.1"
 
-macrotest = "1.1.0"
-trybuild = "1.0.105"
-tokio = { version = "1.45.0", features = ["rt", "rt-multi-thread", "macros"] }
 chrono = "0.4.41"
 claims = "0.8.0"
+macrotest = "1.1.0"
 mockd = { version = "0.4.47", features = ["internet", "unique", "words"] }
 rand = "0.9.1"
 serde_test = "1.0.177"
+tokio = { version = "1.45.0", features = ["rt", "rt-multi-thread", "macros"] }
 tracing-test = "0.2.5"
+trybuild = "1.0.105"
 wiremock = "0.6.3"
 
 [profile.release]
