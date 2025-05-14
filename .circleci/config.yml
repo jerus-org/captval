@@ -32,6 +32,19 @@ executors:
     docker:
       - image: jerusdp/ci-rust:base
 
+jobs:
+  test-features:
+    parameters:
+      features:
+        type: string
+    executor: rust-env
+    steps:
+      - checkout
+      - run: cargo +stable --version
+      - run:
+          name: Running test with features `<<parameters.features>>`
+          command: "cargo +stable test --no-default-features <<parameters.features>>"
+
 workflows:
   check_last_commit:
     when:
@@ -79,13 +92,35 @@ workflows:
           min_rust_version: << pipeline.parameters.min-rust-version >>
       - toolkit/security:
           context: SonarCloud
-      - toolkit/update_changelog:
+
+      - test-features:
+          matrix:
+            parameters:
+              features:
+                [
+                  "-F hcaptcha,ext,rustls-backend",
+                  "-F hcaptcha,ext,rustls-backend,enterprise",
+                  "",
+                  "-F hcaptcha,rustls-backend",
+                  "-F hcaptcha,ext,rustls-backend,trace,enterprise",
+                ]
           requires:
             - toolkit/common_tests
             - toolkit/required_builds
+
+      # - toolkit/test_wasm:
+      #     min_rust_version: << pipeline.parameters.min-rust-version >>
+      #     requires:
+      #       - toolkit/common_tests
+      #       - toolkit/required_builds
+
+      - toolkit/update_changelog:
+          requires:
             - toolkit/idiomatic_rust
             - toolkit/code_coverage
             - toolkit/security
+            # - toolkit/test_wasm
+            - test-features
           context:
             - release
             - bot-check
