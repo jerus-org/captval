@@ -206,7 +206,7 @@
 //!             captcha)?;
 //!         
 //!         let client = Client::new();
-//!         let _response = client.verify_client_response(request).await?;
+//!         let _response = client.verify(request).await?;
 //!
 //!         let contact_form: ContactForm = serde_json::from_str(&body_str)?;
 //!
