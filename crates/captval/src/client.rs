@@ -185,105 +185,6 @@ impl Client {
     ///
     ///     let client = Client::new();
     ///
-    ///     let response = client.verify_client_response(request).await?;
-    ///
-    /// # #[cfg(feature = "enterprise")]
-    ///     let score = response.score();
-    /// # #[cfg(feature = "enterprise")]
-    ///     let score_reasons = response.score_reason();
-    ///
-    /// # Ok(())
-    /// # }
-    /// # fn get_your_secret() -> String {
-    /// #   "0x123456789abcde0f123456789abcdef012345678".to_string()
-    /// # }
-    /// # fn random_response() -> String {
-    /// #    let mut rng = rng();
-    /// #    iter::repeat(())
-    /// #        .map(|()| rng.sample(Alphanumeric))
-    /// #        .map(char::from)
-    /// #        .take(100)
-    /// #        .collect()
-    /// # }
-    /// # fn get_captcha() -> Captcha {
-    /// #    Captcha::new(&random_response())
-    /// #       .unwrap()
-    /// #       .set_remoteip(&mockd::internet::ipv4_address())
-    /// #       .unwrap()
-    /// #       .set_sitekey(&mockd::unique::uuid_v4())
-    /// #       .unwrap()
-    /// #       }
-    /// ```
-    ///
-    /// # Logging
-    ///
-    /// If the `trace` feature is enabled a debug level span is set for the
-    /// method and an event logs the response.
-    ///
-    #[allow(dead_code)]
-    #[cfg_attr(
-        feature = "trace",
-        tracing::instrument(
-            name = "Request verification from captval.",
-            skip(self),
-            level = "debug"
-        )
-    )]
-    #[deprecated(since = "3.0.0", note = "please use `verify` instead")]
-    pub async fn verify_client_response(self, request: Request) -> Result<Response, Error> {
-        let form: Form = request.into();
-        #[cfg(feature = "trace")]
-        tracing::debug!(
-            "The form to submit to Captval API: {:?}",
-            serde_urlencoded::to_string(&form).unwrap_or_else(|_| "form corrupted".to_owned())
-        );
-        let response = self
-            .client
-            .post(self.url.clone())
-            .form(&form)
-            .send()
-            .await?
-            .json::<Response>()
-            .await?;
-        #[cfg(feature = "trace")]
-        tracing::debug!("The response is: {:?}", response);
-        response.check_error()?;
-        Ok(response)
-    }
-
-    /// Verify the client token with the Captval service API.
-    ///
-    /// Call the Captval api and provide a [Request] struct.
-    ///
-    /// # Inputs
-    ///
-    /// Request contains the required and optional fields
-    /// for the Captval API. The required fields include the response
-    /// code to validate and the secret key.
-    ///
-    /// # Outputs
-    ///
-    /// This method returns [Response] if successful and [Error] if
-    /// unsuccessful.
-    ///
-    /// # Example
-    ///
-    ///
-    ///  ```no_run
-    ///     use captval::{Client, Request};
-    /// # use captval::Captcha;
-    /// # use rand::distr::Alphanumeric;
-    /// # use rand::{rng, Rng};
-    /// # use std::iter;
-    /// # #[tokio::main]
-    /// # async fn main() -> Result<(), captval::Error> {
-    ///     let secret = get_your_secret(); // your secret key
-    ///     let captcha = get_captcha();  // user's token
-    ///
-    ///     let request = Request::new(&secret, captcha)?;
-    ///
-    ///     let client = Client::new();
-    ///
     ///     let response = client.verify(request).await?;
     ///
     /// # #[cfg(feature = "enterprise")]
@@ -473,7 +374,7 @@ mod tests {
 
         let client = Client::new_with(&uri).unwrap();
         #[allow(deprecated)]
-        let response = client.verify_client_response(request).await;
+        let response = client.verify(request).await;
         assert_ok!(&response);
         let response = response.unwrap();
         assert!(&response.success());
@@ -505,7 +406,7 @@ mod tests {
 
         let client = Client::new_with(&uri).unwrap();
         #[allow(deprecated)]
-        let response = client.verify_client_response(request).await;
+        let response = client.verify(request).await;
         assert_err!(&response);
     }
 
