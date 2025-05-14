@@ -24,16 +24,22 @@ uuid.workspace = true
 [dev-dependencies]
 chrono.workspace = true
 claims.workspace = true
+env_logger.workspace = true
+itertools.workspace = true
 mockd = { workspace = true }
 rand.workspace = true
 serde_test.workspace = true
 tokio.workspace = true
 tracing-test.workspace = true
+trybuild.workspace = true
 wiremock.workspace = true
 
 [features]
-default = ["hcaptcha"]
-trace = ["dep:tracing"]
+default = ["hcaptcha", "ext", "rustls-backend"]
 enterprise = []
 ext = ["dep:hex"]
 hcaptcha = []
+nativetls-backend = ["reqwest/native-tls"]
+nightly = []
+rustls-backend = ["reqwest/rustls-tls"]
+trace = ["dep:tracing"]

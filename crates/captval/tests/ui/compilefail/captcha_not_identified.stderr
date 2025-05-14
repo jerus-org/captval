@@ -1,0 +1,14 @@
+error: Field containing captval not identified
+
+         = help: The field containing the captval response string must be identified with #[captcha]
+
+               #[derive(Captval)]
+               struct MyStruct {
+                   #[captcha]
+                   captval: String,
+               }
+
+ --> tests/ui/compilefail/captcha_not_identified.rs:4:8
+  |
+4 | struct Test {
+  |        ^^^^
