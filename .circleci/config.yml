@@ -96,7 +96,14 @@ workflows:
       - test-features:
           matrix:
             parameters:
-              features: ["-F ext rustls-backend hcaptcha"]
+              features:
+                [
+                  "-F hcaptcha,ext,rustls-backend",
+                  "-F hcaptcha,ext,rustls-backend,enterprise",
+                  "",
+                  "-F hcaptcha,rustls-backend",
+                  "-F hcaptcha,ext,rustls-backend,trace,enterprise",
+                ]
           requires:
             - toolkit/common_tests
             - toolkit/required_builds
@@ -109,8 +116,6 @@ workflows:
 
       - toolkit/update_changelog:
           requires:
-            - toolkit/common_tests
-            - toolkit/required_builds
             - toolkit/idiomatic_rust
             - toolkit/code_coverage
             - toolkit/security
