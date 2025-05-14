@@ -31,6 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 📝 docs(funding)-add FUNDING.yml configuration(pr [#37])
 - 📝 docs(changelog)-add changelog symlinks for sub-crates(pr [#38])
 - 📝 docs(license)-add Apache and MIT licenses(pr [#39])
+- 🔧 chore(release)-add release configuration file(pr [#41])
 
 ### Security
 
@@ -100,5 +101,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#38]: https://github.com/jerus-org/captval/pull/38
 [#39]: https://github.com/jerus-org/captval/pull/39
 [#40]: https://github.com/jerus-org/captval/pull/40
+[#41]: https://github.com/jerus-org/captval/pull/41
 [Unreleased]: https://github.com/jerus-org/captval/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/jerus-org/captval/releases/tag/v0.1.0
