@@ -309,7 +309,7 @@
 //!
 //! ```toml
 //! [dependency]
-//! captval = { version = "0.1.0", default-features = false }
+//! captval = { version = "0.1.2", default-features = false }
 //! ```
 //!
 //! The following feature flags are available:

@@ -34,7 +34,7 @@ To use captval, add the following to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-captval = "0.1.0"
+captval = "0.1.2"
 
 ```
 
