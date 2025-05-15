@@ -5,9 +5,3 @@ consolidate-commits = false
 allow-branch = ["main"]
 sign-commit = true
 sign-tag = true
-pre-release-replacements = [
-    { file = "CHANGELOG.md", search = "## \\[Unreleased\\]", replace = "## [{{version}}] - {{date}}", exactly = 1 },
-    { file = "CHANGELOG.md", search = "\\[Unreleased\\]:", replace = "[{{version}}]:", exactly = 1 },
-    { file = "CHANGELOG.md", search = "\\.\\.\\.HEAD", replace = "...{{tag_name}}", exactly = 1 },
-    { file = "README.md", search = "captval = .*", replace = "{{crate_name}} = \"{{version}}\"" },
-]
