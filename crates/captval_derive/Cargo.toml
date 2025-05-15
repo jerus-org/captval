@@ -1,7 +1,6 @@
 [package]
 name = "captval_derive"
 version = "0.1.0"
-edition = "2021"
 description = """
 Derive macro for captval. Please use captval crate.
 """
@@ -20,6 +19,9 @@ include = [
     "LICENSE-MIT",
     "CHANGES.md",
 ]
+edition.workspace = true
+rust-version.workspace = true
+publish = true
 
 [lib]
 name = "captval_derive"
