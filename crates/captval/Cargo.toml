@@ -1,6 +1,6 @@
 [package]
 name = "captval"
-version = "0.1.0"
+version = "0.1.1"
 description = "Captcha validators"
 documentation = "https://docs.rs/captval"
 repository = "https://github.com/jerus-org/captval"
@@ -23,7 +23,7 @@ rust-version.workspace = true
 publish = true
 
 [dependencies]
-captval_derive = { path = "../captval_derive" }
+captval_derive = { version = "0.1.1", path = "../captval_derive" }
 hex = { workspace = true, optional = true }
 reqwest.workspace = true
 serde.workspace = true

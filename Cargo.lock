@@ -215,7 +215,7 @@ checksum = "d71b6127be86fdcfddb610f7182ac57211d4b18a3e9c82eb2d17662f2227ad6a"
 
 [[package]]
 name = "captval"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "captval_derive",
  "chrono",
@@ -247,7 +247,7 @@ dependencies = [
 
 [[package]]
 name = "captval_derive"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "captval",
  "macrotest",
