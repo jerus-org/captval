@@ -48,6 +48,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 👷 ci(circleci)-remove redundant jobs from release workflow(pr [#55])
 - ♻️ refactor(release)-update release configuration for captval(pr [#56])
 - 👷 ci(circleci)-update toolkit orb and refine release jobs(pr [#57])
+- 👷 ci(circleci)-fix test command syntax in config(pr [#58])
 
 ### Security
 
@@ -134,5 +135,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#55]: https://github.com/jerus-org/captval/pull/55
 [#56]: https://github.com/jerus-org/captval/pull/56
 [#57]: https://github.com/jerus-org/captval/pull/57
+[#58]: https://github.com/jerus-org/captval/pull/58
 [Unreleased]: https://github.com/jerus-org/captval/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/jerus-org/captval/releases/tag/v0.1.0
