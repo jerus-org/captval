@@ -1,7 +1,5 @@
 pre-release-commit-message = "chore: Release {{crate_name}} {{version}}"
-tag-message = "chore: Release {{crate_name}} version {{tag_name}}"
+tag-message = "{{tag_name}}"
 tag-name = "{{prefix}}v{{version}}"
 consolidate-commits = false
 allow-branch = ["main"]
-sign-commit = true
-sign-tag = true
