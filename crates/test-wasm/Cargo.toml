@@ -1,0 +1,29 @@
+[package]
+name = "test-wasm"
+version = "0.1.0"
+authors = ["Jeremiah Russell <jerry@jrussell.ie>"]
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+claims.workspace = true
+captval = { path = "../captval", features = ["enterprise"] }
+captval_derive = { path = "../captval_derive" }
+wasm-bindgen.workspace = true
+wasm-bindgen-futures.workspace = true
+
+[dev-dependencies]
+wasm-bindgen-test.workspace = true
+
+[profile.release]
+# Tell `rustc` to optimize for small code size.
+opt-level = "s"
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = [
+    'cfg(wasm_bindgen_unstable_test_coverage)',
+] }
