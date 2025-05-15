@@ -2,9 +2,22 @@
 name = "captval"
 version = "0.1.0"
 description = "Captcha validators"
-license = "MIT"
 documentation = "https://docs.rs/captval"
 repository = "https://github.com/jerus-org/captval"
+authors = ["Jeremiah Russell <jrussell@jerus.ie>"]
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+categories = ["web-programming"]
+keywords = ["hcaptcha", "captcha", "security", "backend", "protection"]
+include = [
+    "**/*.rs",
+    "Cargo.toml",
+    "README.md",
+    "LICENSE-APACHE",
+    "LICENSE-MIT",
+    "CHANGES.md",
+]
+
 edition.workspace = true
 rust-version.workspace = true
 publish = true

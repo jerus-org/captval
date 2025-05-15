@@ -42,6 +42,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ♻️ refactor(client)-remove deprecated verify_client_response method(pr [#48])
 - 📝 docs(lib)-update code example annotations(pr [#49])
 - 👷 ci(circleci)-add test-features job to workflow(pr [#50])
+- 🔧 chore(cargo)-update package metadata and configuration(pr [#52])
 
 ### Security
 
@@ -122,5 +123,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#49]: https://github.com/jerus-org/captval/pull/49
 [#50]: https://github.com/jerus-org/captval/pull/50
 [#51]: https://github.com/jerus-org/captval/pull/51
+[#52]: https://github.com/jerus-org/captval/pull/52
 [Unreleased]: https://github.com/jerus-org/captval/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/jerus-org/captval/releases/tag/v0.1.0
