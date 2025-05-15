@@ -159,16 +159,3 @@ workflows:
           ssh_fingerprint: << pipeline.parameters.fingerprint >>
           min_rust_version: << pipeline.parameters.min-rust-version >>
           echo: true
-          when_github_release: false
-
-      - toolkit/make_release:
-          requires:
-            - cargo release
-          name: github release for hcaptcha
-          context:
-            - release
-            - bot-check
-          ssh_fingerprint: << pipeline.parameters.fingerprint >>
-          min_rust_version: << pipeline.parameters.min-rust-version >>
-          when_cargo_release: false
-          package: captval
