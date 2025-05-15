@@ -23,7 +23,7 @@ rust-version.workspace = true
 publish = true
 
 [dependencies]
-captval_derive = { version = "0.1.1", path = "../captval_derive" }
+captval_derive = { version = "0.1.2", path = "../captval_derive" }
 hex = { workspace = true, optional = true }
 reqwest.workspace = true
 serde.workspace = true
