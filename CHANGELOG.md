@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ✨ add new Captval client implementation(pr [#35])
 - ✨ add new captval_derive crate(pr [#40])
 - ✨ add derive macro for Captval trait(pr [#42])
+- ✨ add initial test-wasm crate(pr [#51])
 
 ### Changed
 
@@ -120,5 +121,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#48]: https://github.com/jerus-org/captval/pull/48
 [#49]: https://github.com/jerus-org/captval/pull/49
 [#50]: https://github.com/jerus-org/captval/pull/50
+[#51]: https://github.com/jerus-org/captval/pull/51
 [Unreleased]: https://github.com/jerus-org/captval/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/jerus-org/captval/releases/tag/v0.1.0
