@@ -42,7 +42,7 @@ jobs:
       - checkout
       - run: cargo +stable --version
       - run:
-          name: Running test with features-H<<parameters.features>>H
+          name: Running test with features-|<<parameters.features>>|
           command: "cargo +stable test --no-default-features <<parameters.features>>"
 
 workflows:
