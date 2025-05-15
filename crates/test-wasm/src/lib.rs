@@ -5,7 +5,7 @@ use wasm_bindgen::prelude::*;
 #[derive(Captval)]
 struct Test {
     #[captcha]
-    hcaptcha: String,
+    token: String,
 }
 
 #[wasm_bindgen]
@@ -14,7 +14,7 @@ pub async fn validate_standard() {
     let secret = "0x0000000000000000000000000000000000000000";
 
     let form = Test {
-        hcaptcha: response.to_string(),
+        token: response.to_string(),
     };
 
     let response = form.valid_response(secret, None).await;
