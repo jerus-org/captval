@@ -152,7 +152,6 @@ workflows:
         - not: << pipeline.parameters.validation-flag >>
     jobs:
       - toolkit/make_release:
-          name: cargo release
           context:
             - release
             - bot-check
