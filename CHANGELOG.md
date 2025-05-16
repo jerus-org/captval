@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - 👷 ci(circleci)-remove github release job(pr [#60])
+- 🔧 chore(config)-update renovate configuration for improved dependency management(pr [#61])
 
 ## [0.1.2] - 2025-05-15
 
@@ -145,6 +146,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#58]: https://github.com/jerus-org/captval/pull/58
 [#59]: https://github.com/jerus-org/captval/pull/59
 [#60]: https://github.com/jerus-org/captval/pull/60
+[#61]: https://github.com/jerus-org/captval/pull/61
 [Unreleased]: https://github.com/jerus-org/captval/compare/v0.1.2...HEAD
 [0.1.2]: https://github.com/jerus-org/captval/compare/v0.1.0...v0.1.2
 [0.1.0]: https://github.com/jerus-org/captval/releases/tag/v0.1.0
