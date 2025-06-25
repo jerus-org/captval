@@ -14,6 +14,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 🔧 chore(vscode)-add sonarlint connected mode configuration(pr [#62])
 - ♻️ refactor(tests)-update test directory naming for clarity(pr [#63])
 
+### Fixed
+
+- deps: update rust crate reqwest to 0.12.20(pr [#65])
+
 ## [0.1.2] - 2025-05-15
 
 ### Added
@@ -151,6 +155,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#61]: https://github.com/jerus-org/captval/pull/61
 [#62]: https://github.com/jerus-org/captval/pull/62
 [#63]: https://github.com/jerus-org/captval/pull/63
+[#65]: https://github.com/jerus-org/captval/pull/65
 [Unreleased]: https://github.com/jerus-org/captval/compare/v0.1.2...HEAD
 [0.1.2]: https://github.com/jerus-org/captval/compare/v0.1.0...v0.1.2
 [0.1.0]: https://github.com/jerus-org/captval/releases/tag/v0.1.0
