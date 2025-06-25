@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - deps: update rust crate tokio to 1.45.1(pr [#68])
 - deps: update rust crate wiremock to 0.6.4(pr [#69])
 - deps: update rust crate lambda_runtime to 0.14.2(pr [#70])
+- deps: update rust crate uuid to 1.17.0(pr [#71])
 
 ## [0.1.2] - 2025-05-15
 
@@ -168,6 +169,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#68]: https://github.com/jerus-org/captval/pull/68
 [#69]: https://github.com/jerus-org/captval/pull/69
 [#70]: https://github.com/jerus-org/captval/pull/70
+[#71]: https://github.com/jerus-org/captval/pull/71
 [Unreleased]: https://github.com/jerus-org/captval/compare/v0.1.2...HEAD
 [0.1.2]: https://github.com/jerus-org/captval/compare/v0.1.0...v0.1.2
 [0.1.0]: https://github.com/jerus-org/captval/releases/tag/v0.1.0
