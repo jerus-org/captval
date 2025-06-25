@@ -36,7 +36,7 @@ macrotest = "1.1.0"
 mockd = { version = "0.4.49", features = ["internet", "unique", "words"] }
 rand = "0.9.1"
 serde_test = "1.0.177"
-tokio = { version = "1.45.0", features = ["rt", "rt-multi-thread", "macros"] }
+tokio = { version = "1.45.1", features = ["rt", "rt-multi-thread", "macros"] }
 tracing-appender = "0.2.3"
 tracing-bunyan-formatter = "0.3.10"
 tracing-log = "0.2.0"
