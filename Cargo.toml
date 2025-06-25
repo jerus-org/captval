@@ -31,7 +31,7 @@ wasm-bindgen-futures = "0.4.50"
 
 chrono = "0.4.41"
 claims = "0.8.0"
-lambda_runtime = "0.13.0"
+lambda_runtime = "0.14.2"
 macrotest = "1.1.0"
 mockd = { version = "0.4.49", features = ["internet", "unique", "words"] }
 rand = "0.9.1"
