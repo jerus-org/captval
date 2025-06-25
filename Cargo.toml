@@ -43,7 +43,7 @@ tracing-log = "0.2.0"
 tracing-subscriber = "0.3.19"
 tracing-test = "0.2.5"
 trybuild = "1.0.105"
-wiremock = "0.6.3"
+wiremock = "0.6.4"
 wasm-bindgen-test = "0.3.50"
 
 [profile.release]
