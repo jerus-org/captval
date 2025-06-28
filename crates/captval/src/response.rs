@@ -95,81 +95,46 @@ pub struct Response {
 }
 
 #[cfg_attr(docsrs, allow(rustdoc::missing_doc_code_examples))]
-#[cfg(feature = "enterprise")]
 impl fmt::Display for Response {
     #[cfg_attr(docsrs, allow(rustdoc::missing_doc_code_examples))]
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(
-            f,
-            r#"
-        Status:         {}
-        Timestamp:      {}
-        Hostname:       {}
-        Credit:         {}
-        Error Codes:    {}
-        Score:          {}
-        Score Reason:   {}
-        "#,
-            self.success,
-            match self.timestamp() {
-                Some(v) => v,
-                None => "".to_owned(),
-            },
-            match self.hostname() {
-                Some(v) => v,
-                None => "".to_owned(),
-            },
-            match self.credit() {
-                Some(v) => format!("{v}"),
-                None => "".to_owned(),
-            },
-            match self.error_codes() {
-                Some(v) => format!("{v:?}"),
-                None => "".to_owned(),
-            },
-            match self.score() {
-                Some(v) => format!("{v}"),
-                None => "".to_owned(),
-            },
-            match self.score_reason() {
-                Some(v) => format!("{v:?}"),
-                None => "".to_owned(),
-            },
-        )
-    }
-}
+        let mut text = format!("Status:         {}\n", self.success);
+        if let Some(timestamp) = self.timestamp() {
+            text.push_str(&format!("Timestamp:      {timestamp}\n"));
+        };
+        if let Some(hostname) = self.hostname() {
+            text.push_str(&format!("Hostname:       {hostname}\n"));
+        };
+        if let Some(credit) = self.credit() {
+            text.push_str(&format!("Credit:         {credit}\n"));
+        };
+        if let Some(error_codes) = self.error_codes() {
+            text.push_str("Error Codes:    ");
+            let mut codes = error_codes.iter().peekable();
+            while let Some(code) = codes.next() {
+                text.push_str(&format!("{code}\n"));
+                if codes.peek().is_some() {
+                    text.push_str("                ");
+                }
+            }
+        };
+        #[cfg(feature = "enterprise")]
+        if let Some(score) = self.score() {
+            text.push_str(&format!("Score:          {score}\n"));
+        };
+        #[cfg(feature = "enterprise")]
+        if let Some(score_reason) = self.score_reason() {
+            text.push_str("Score Reason:   ");
+            let mut scores = score_reason.iter().peekable();
+            while let Some(score) = scores.next() {
+                text.push_str(&format!("{score}\n"));
+                if scores.peek().is_some() {
+                    text.push_str("                ");
+                }
+            }
+        };
 
-#[cfg(not(feature = "enterprise"))]
-impl fmt::Display for Response {
-    #[cfg_attr(docsrs, allow(rustdoc::missing_doc_code_examples))]
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(
-            f,
-            r#"
-        Status:         {}
-        Timestamp:      {}
-        Hostname:       {}
-        Credit:         {}
-        Error Codes:    {}
-        "#,
-            self.success,
-            match self.timestamp() {
-                Some(v) => v,
-                None => "".to_owned(),
-            },
-            match self.hostname() {
-                Some(v) => v,
-                None => "".to_owned(),
-            },
-            match self.credit() {
-                Some(v) => format!("{v}"),
-                None => "".to_owned(),
-            },
-            match self.error_codes() {
-                Some(v) => format!("{v:?}"),
-                None => "".to_owned(),
-            },
-        )
+        write!(f, "{text}")
     }
 }
 
@@ -681,9 +646,10 @@ mod tests {
             assert!(formatted.contains("Timestamp:      2023-01-01T00:00:00Z"));
             assert!(formatted.contains("Hostname:       test.com"));
             assert!(formatted.contains("Credit:         true"));
-            assert!(formatted.contains(r#"Error Codes:    {MissingSecret}"#));
+            let code = format!("{}", Code::MissingSecret);
+            assert!(formatted.contains(&format!("Error Codes:    {code}")));
             assert!(formatted.contains("Score:          0.9"));
-            assert!(formatted.contains(r#"Score Reason:   {"reason1"}"#));
+            assert!(formatted.contains("Score Reason:   reason1"));
         }
     }
 
@@ -705,11 +671,13 @@ mod tests {
             };
 
             let formatted = format!("{}", response);
+            println!(formatted);
             assert!(formatted.contains("Status:         false"));
             assert!(formatted.contains("Timestamp:      2023-01-01T00:00:00Z"));
             assert!(formatted.contains("Hostname:       test.com"));
             assert!(formatted.contains("Credit:         false"));
-            assert!(formatted.contains(r#"Error Codes:    {MissingSecret}"#));
+            let code = format!("{}", Code::MissingSecret);
+            assert!(formatted.contains(&format!("Error Codes:    code")));
         }
     }
 
@@ -727,10 +695,6 @@ mod tests {
 
         let formatted = format!("{response}");
         assert!(formatted.contains("Status:         true"));
-        assert!(formatted.contains("Timestamp:      "));
-        assert!(formatted.contains("Hostname:       "));
-        assert!(formatted.contains("Credit:         "));
-        assert!(formatted.contains("Error Codes:    "));
     }
 
     #[test]
