@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 🔧 chore(config)-update renovate configuration for improved dependency management(pr [#61])
 - 🔧 chore(vscode)-add sonarlint connected mode configuration(pr [#62])
 - ♻️ refactor(tests)-update test directory naming for clarity(pr [#63])
+- 💄 style(hcaptcha)-simplify string formatting in tests(pr [#72])
 
 ### Fixed
 
@@ -170,6 +171,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#69]: https://github.com/jerus-org/captval/pull/69
 [#70]: https://github.com/jerus-org/captval/pull/70
 [#71]: https://github.com/jerus-org/captval/pull/71
+[#72]: https://github.com/jerus-org/captval/pull/72
 [Unreleased]: https://github.com/jerus-org/captval/compare/v0.1.2...HEAD
 [0.1.2]: https://github.com/jerus-org/captval/compare/v0.1.0...v0.1.2
 [0.1.0]: https://github.com/jerus-org/captval/releases/tag/v0.1.0
