@@ -517,11 +517,8 @@ mod tests {
         });
         let response: Response = serde_json::from_value(api_response).unwrap();
         assert!(response.success());
-        assert_eq!(
-            response.timestamp(),
-            Some("2020-11-11T23:27:00Z".to_owned())
-        );
-        assert_eq!(response.hostname(), Some("my-host.ie".to_owned()));
+        assert_eq!(response.timestamp(), Some("2020-11-11T23:27:00Z"));
+        assert_eq!(response.hostname(), Some("my-host.ie"));
     }
 
     #[test]

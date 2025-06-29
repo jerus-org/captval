@@ -59,8 +59,8 @@
 use crate::Code;
 use crate::Error;
 use serde::Deserialize;
-use std::collections::HashSet;
 use std::fmt;
+use std::{collections::HashSet, fmt::Display};
 
 type Score = f32;
 
@@ -99,42 +99,42 @@ impl fmt::Display for Response {
     #[cfg_attr(docsrs, allow(rustdoc::missing_doc_code_examples))]
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         let mut text = format!("Status:         {}\n", self.success);
-        if let Some(timestamp) = self.timestamp() {
-            text.push_str(&format!("Timestamp:      {timestamp}\n"));
-        };
-        if let Some(hostname) = self.hostname() {
-            text.push_str(&format!("Hostname:       {hostname}\n"));
-        };
-        if let Some(credit) = self.credit() {
-            text.push_str(&format!("Credit:         {credit}\n"));
-        };
-        if let Some(error_codes) = self.error_codes() {
-            text.push_str("Error Codes:    ");
-            let mut codes = error_codes.iter().peekable();
-            while let Some(code) = codes.next() {
-                text.push_str(&format!("{code}\n"));
-                if codes.peek().is_some() {
-                    text.push_str("                ");
-                }
-            }
-        };
+
+        add_value(&mut text, "Timestamp", self.timestamp());
+        add_value(&mut text, "Hostname", self.hostname());
+        add_value(&mut text, "Credit", self.credit());
+        add_set(&mut text, "Error Codes", self.error_codes());
+
         #[cfg(feature = "enterprise")]
-        if let Some(score) = self.score() {
-            text.push_str(&format!("Score:          {score}\n"));
-        };
+        add_value(&mut text, "Score", self.score());
+
         #[cfg(feature = "enterprise")]
-        if let Some(score_reason) = self.score_reason() {
-            text.push_str("Score Reason:   ");
-            let mut scores = score_reason.iter().peekable();
-            while let Some(score) = scores.next() {
-                text.push_str(&format!("{score}\n"));
-                if scores.peek().is_some() {
-                    text.push_str("                ");
-                }
-            }
-        };
+        add_set(&mut text, "Score Reason", self.score_reason());
 
         write!(f, "{text}")
+    }
+}
+
+fn add_value<G: Display>(text: &mut String, label: &str, value: Option<G>) {
+    if let Some(value) = value {
+        let label = format!("{label}:");
+        let label = format!("{label:<16}");
+        text.push_str(&format!("{label}{value}\n"));
+    }
+}
+
+fn add_set<G: Display>(text: &mut String, label: &str, values: Option<&HashSet<G>>) {
+    if let Some(set) = values {
+        let label = format!("{label}:");
+        let label = format!("{label:<16}");
+        text.push_str(&label);
+        let mut items = set.iter().peekable();
+        while let Some(item) = items.next() {
+            text.push_str(&format!("{item}\n"));
+            if items.peek().is_some() {
+                text.push_str("                ");
+            }
+        }
     }
 }
 
@@ -238,8 +238,8 @@ impl Response {
     /// #       .unwrap()
     /// #       }
     #[allow(dead_code)]
-    pub fn hostname(&self) -> Option<String> {
-        self.hostname.clone()
+    pub fn hostname(&self) -> Option<&str> {
+        self.hostname.as_deref()
     }
 
     /// Get the value of the timestamp field
@@ -282,8 +282,8 @@ impl Response {
     /// #       .unwrap()
     /// #       }
     #[allow(dead_code)]
-    pub fn timestamp(&self) -> Option<String> {
-        self.challenge_ts.clone()
+    pub fn timestamp(&self) -> Option<&str> {
+        self.challenge_ts.as_deref()
     }
 
     /// Get the value of the credit field
@@ -371,8 +371,8 @@ impl Response {
     /// #       .unwrap()
     /// #       }
     #[allow(dead_code)]
-    pub fn error_codes(&self) -> Option<HashSet<Code>> {
-        self.error_codes.clone()
+    pub fn error_codes(&self) -> Option<&HashSet<Code>> {
+        self.error_codes.as_ref()
     }
 
     /// Get the value of the score field
@@ -465,8 +465,8 @@ impl Response {
     #[allow(dead_code)]
     #[cfg(feature = "enterprise")]
     #[cfg_attr(docsrs, doc(cfg(feature = "enterprise")))]
-    pub fn score_reason(&self) -> Option<HashSet<String>> {
-        self.score_reason.clone()
+    pub fn score_reason(&self) -> Option<&HashSet<String>> {
+        self.score_reason.as_ref()
     }
 }
 
@@ -522,17 +522,14 @@ mod tests {
     fn timestamp_test() {
         let response = test_response();
 
-        assert_eq!(
-            response.timestamp(),
-            Some("2020-11-11T23:27:00Z".to_owned())
-        );
+        assert_eq!(response.timestamp(), Some("2020-11-11T23:27:00Z"));
     }
 
     #[test]
     fn hostname_test() {
         let response = test_response();
 
-        assert_eq!(response.hostname(), Some("my-host.ie".to_owned()));
+        assert_eq!(response.hostname(), Some("my-host.ie"));
     }
 
     #[test]
