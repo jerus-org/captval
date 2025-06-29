@@ -13,7 +13,7 @@ mod sitekey;
 // pub(crate) use client_response::ClientResponse;
 pub use code::Code;
 
-pub use client_response::ClientResponse;
+pub use client_response::Token;
 #[cfg(not(feature = "ext"))]
 pub(crate) use secret::Secret;
 #[allow(unused_imports)]

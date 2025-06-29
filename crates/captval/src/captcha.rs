@@ -24,13 +24,13 @@
 //! # }
 //! ```
 
-use crate::{ClientResponse, Error, Remoteip, Sitekey};
+use crate::{Error, Remoteip, Sitekey, Token};
 
 /// Capture the Captcha data coming from the client.
 #[derive(Debug, Default, Clone, serde::Serialize, serde::Deserialize)]
 pub struct Captcha {
     /// The response string collected by client.
-    pub(crate) response: ClientResponse,
+    pub(crate) response: Token,
     /// The remoteip of the client.
     pub(crate) remoteip: Option<Remoteip>,
     /// The sitekey from the client.
@@ -94,7 +94,7 @@ impl Captcha {
     )]
     pub fn new(response: &str) -> Result<Self, Error> {
         Ok(Captcha {
-            response: ClientResponse::parse(response.to_owned())?,
+            response: Token::parse(response.to_owned())?,
             remoteip: None,
             sitekey: None,
         })
@@ -302,7 +302,7 @@ impl Captcha {
         feature = "trace",
         tracing::instrument(name = "Get response field.", level = "debug")
     )]
-    pub fn response(self) -> ClientResponse {
+    pub fn response(self) -> Token {
         self.response
     }
 
