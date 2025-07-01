@@ -11,7 +11,7 @@ crate-type = ["cdylib", "rlib"]
 
 [dependencies]
 claims.workspace = true
-captval = { path = "../captval", features = ["enterprise"] }
+captval = { path = "../captval", features = ["enterprise", "recaptcha"] }
 captval_derive = { path = "../captval_derive" }
 wasm-bindgen.workspace = true
 wasm-bindgen-futures.workspace = true
