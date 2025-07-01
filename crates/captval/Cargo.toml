@@ -8,7 +8,7 @@ authors = ["Jeremiah Russell <jrussell@jerus.ie>"]
 license = "MIT OR Apache-2.0"
 readme = "README.md"
 categories = ["web-programming"]
-keywords = ["hcaptcha", "captcha", "security", "backend", "protection"]
+keywords = ["hcaptcha", "recaptcha", "captcha", "security", "backend", "protection"]
 include = [
     "**/*.rs",
     "Cargo.toml",
@@ -57,6 +57,7 @@ default = ["hcaptcha", "ext", "rustls-backend"]
 enterprise = []
 ext = ["dep:hex"]
 hcaptcha = []
+recaptcha = []
 nativetls-backend = ["reqwest/native-tls"]
 nightly = []
 rustls-backend = ["reqwest/rustls-tls"]
