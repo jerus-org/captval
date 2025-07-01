@@ -32,8 +32,7 @@ impl Secret {
 
 #[cfg(test)]
 mod tests {
-    use super::Secret;
-    use crate::Code;
+    use super::{Code, Secret};
     use crate::Error;
     use claims::{assert_err, assert_ok};
 
@@ -42,6 +41,7 @@ mod tests {
         let secret = " ".to_string();
         assert_err!(Secret::parse(secret));
     }
+
     #[test]
     fn empty_string_is_rejected() {
         let secret = "".to_string();
@@ -57,15 +57,14 @@ mod tests {
     }
 
     #[test]
-    fn test_v1_secret_key_is_valid() {
-        let secret = "0x0000000123456789abcdefABCDEF000000000000".to_string();
+    fn test_valid_secret_key() {
+        let secret = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI".to_string();
         assert_ok!(Secret::parse(secret));
     }
 
-    // A second format of secret is being issued since September 2023
     #[test]
-    fn test_v2_secret_key_is_valid() {
-        let secret = "ES_a5e0b5406e2b4c939ce48946389463894638473b1c".to_string();
+    fn test_another_valid_secret_key() {
+        let secret = "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe".to_string();
         assert_ok!(Secret::parse(secret));
     }
 }

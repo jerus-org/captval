@@ -12,5 +12,5 @@ pub(crate) use sitekey::Sitekey;
 #[allow(unused_imports)]
 pub(crate) use token::Token;
 
-/// Endpoint url for the Hcaptcha siteverify API.
-pub const VERIFY_URL: &str = "https://api.hcaptcha.com/siteverify";
+/// Endpoint url for the Google reCAPTCHA siteverify API.
+pub const VERIFY_URL: &str = "https://www.google.com/recaptcha/api/siteverify";

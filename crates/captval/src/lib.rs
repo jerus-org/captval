@@ -304,8 +304,8 @@
 //! ```
 //! ## Feature Flags
 //!
-//! The default library includes extended validation for the secret field and use of rustls TLS as the TLS backend.
-//! Disable this validation by setting default-features = false and enable rustls with features=["nativetls-backend"].
+//! The default library includes hcaptcha and use of rustls TLS as the TLS backend.
+//! Disable this validation by setting default-features = false and enable native tls with features=["hcaptcha", "nativetls-backend"].
 //!
 //! ```toml
 //! [dependency]
@@ -313,27 +313,37 @@
 //! ```
 //!
 //! The following feature flags are available:
-//! * `enterprise` - Enable methods to access enterprise service fields in the `Response`
-//! * `ext` - Enables extended validation of secret
-//! * `trace` - Enables tracing instrumentation on all functions. Traces are logged at the debug level. The value of the secret is not logged.
-//! * `nativetls-backend` - Enables native-tls backend in reqwests
-//! * `rustls-backend` - Enables rustls backend in reqwests
+//! * `enterprise`          - Enable methods to access hcaptcha enterprise service fields in the `Response`
+//! * `trace`               - Enables tracing instrumentation on all functions. Traces are logged at the debug level. The value of the secret is not logged.
+//! * `nativetls-backend`   - Enables native-tls backend in reqwests
+//! * `rustls-backend`      - Enables rustls backend in reqwests
 //!
 //! ## Rust Version
 //!
 //! This version of captval requires Rust v1.82 or later.
 
+// Compile-time check to prevent both hcaptcha and recaptcha features from being enabled
+// #[cfg(all(feature = "recaptcha", feature = "hcaptcha"))]
+// compile_error!("Cannot enable both 'recaptcha' and 'hcaptcha' features simultaneously. They contain conflicting type names. Please enable only one.");
+
 mod captcha;
 mod captval;
 mod client;
+mod code;
 mod error;
-mod hcaptcha;
+/// hCaptcha validation types and constants.
+#[cfg(feature = "hcaptcha")]
+pub mod hcaptcha;
+/// reCAPTCHA validation types and constants.
+#[cfg(feature = "recaptcha")]
+pub mod recaptcha;
 mod remoteip;
 mod request;
 mod response;
 
 pub use captcha::Captcha;
 pub use client::Client;
+pub use code::Code;
 pub use error::Error;
 pub use request::Request;
 pub use response::Response;
@@ -343,5 +353,17 @@ pub(crate) use remoteip::Remoteip;
 pub use crate::captval::Captval;
 pub use captval_derive::*;
 
-#[cfg(feature = "hcaptcha")]
-pub use hcaptcha::*;
+/// The URL for the hCaptcha verify endpoint.
+#[cfg(all(feature = "hcaptcha", not(feature = "recaptcha")))]
+pub const VERIFY_URL: &str = hcaptcha::VERIFY_URL;
+
+/// The URL for the reCaptcha verify endpoint.
+#[cfg(all(feature = "recaptcha", not(feature = "hcaptcha")))]
+pub const VERIFY_URL: &str = recaptcha::VERIFY_URL;
+
+// Re-export types based on enabled features
+#[cfg(all(feature = "hcaptcha", not(feature = "recaptcha")))]
+pub(crate) use hcaptcha::{Secret, Sitekey, Token};
+
+#[cfg(all(feature = "recaptcha", not(feature = "hcaptcha")))]
+pub(crate) use recaptcha::{Secret, Sitekey, Token};

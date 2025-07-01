@@ -103,6 +103,10 @@ workflows:
                   "",
                   "-F hcaptcha,rustls-backend",
                   "-F hcaptcha,ext,rustls-backend,trace,enterprise",
+                  "-F recaptcha,ext,rustls-backend",
+                  "-F recaptcha,ext,rustls-backend,enterprise",
+                  "-F recaptcha,rustls-backend",
+                  "-F recaptcha,ext,rustls-backend,trace,enterprise",
                 ]
           requires:
             - toolkit/common_tests

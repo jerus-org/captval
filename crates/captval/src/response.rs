@@ -668,7 +668,7 @@ mod tests {
             };
 
             let formatted = format!("{}", response);
-            println!(formatted);
+            println!("{}", formatted);
             assert!(formatted.contains("Status:         false"));
             assert!(formatted.contains("Timestamp:      2023-01-01T00:00:00Z"));
             assert!(formatted.contains("Hostname:       test.com"));
