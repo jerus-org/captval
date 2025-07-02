@@ -44,6 +44,7 @@ uuid.workspace = true
 chrono.workspace = true
 claims.workspace = true
 env_logger.workspace = true
+hex.workspace = true
 itertools.workspace = true
 lambda_runtime.workspace = true
 mockd = { workspace = true }

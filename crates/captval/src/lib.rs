@@ -331,6 +331,7 @@ mod captval;
 mod client;
 mod code;
 mod error;
+mod form;
 /// hCaptcha validation types and constants.
 #[cfg(feature = "hcaptcha")]
 pub mod hcaptcha;
@@ -340,30 +341,23 @@ pub mod recaptcha;
 mod remoteip;
 mod request;
 mod response;
+mod secret;
+mod sitekey;
+mod token;
 
 pub use captcha::Captcha;
 pub use client::Client;
 pub use code::Code;
 pub use error::Error;
+pub(crate) use form::Form;
 pub use request::Request;
 pub use response::Response;
+
+pub(crate) use secret::Secret;
+pub(crate) use sitekey::Sitekey;
+pub(crate) use token::Token;
 
 pub(crate) use remoteip::Remoteip;
 
 pub use crate::captval::Captval;
 pub use captval_derive::*;
-
-/// The URL for the hCaptcha verify endpoint.
-#[cfg(all(feature = "hcaptcha", not(feature = "recaptcha")))]
-pub const VERIFY_URL: &str = hcaptcha::VERIFY_URL;
-
-/// The URL for the reCaptcha verify endpoint.
-#[cfg(all(feature = "recaptcha", not(feature = "hcaptcha")))]
-pub const VERIFY_URL: &str = recaptcha::VERIFY_URL;
-
-// Re-export types based on enabled features
-#[cfg(all(feature = "hcaptcha", not(feature = "recaptcha")))]
-pub(crate) use hcaptcha::{Secret, Sitekey, Token};
-
-#[cfg(all(feature = "recaptcha", not(feature = "hcaptcha")))]
-pub(crate) use recaptcha::{Secret, Sitekey, Token};

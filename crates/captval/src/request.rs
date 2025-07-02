@@ -132,7 +132,7 @@ impl Request {
     pub fn new(secret: &str, captcha: Captcha) -> Result<Request, Error> {
         Ok(Request {
             captcha,
-            secret: crate::Secret::parse(secret.to_owned())?,
+            secret: Secret::parse(secret.to_owned())?,
         })
     }
 
@@ -324,7 +324,7 @@ impl Request {
     }
 
     #[allow(dead_code)]
-    pub(crate) fn secret(&self) -> crate::Secret {
+    pub(crate) fn secret(&self) -> Secret {
         self.secret.clone()
     }
 

@@ -5,5 +5,10 @@
     },
     "rust-analyzer.check.features": [
         "hcaptcha"
-    ]
+    ],
+    "rust-analyzer.cargo.noDefaultFeatures": true,
+    "rust-analyzer.cargo.features": [
+        "hcaptcha"
+    ],
+    "rust-analyzer.check.noDefaultFeatures": true
 }

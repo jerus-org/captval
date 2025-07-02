@@ -60,8 +60,9 @@ fn invalid_sitekey(s: &str) -> Result<(), Error> {
     }
 }
 
+#[cfg(feature = "hcaptcha")]
 #[cfg(test)]
-mod tests {
+mod hcaptcha_tests {
     use super::Sitekey;
     use crate::Code;
     use crate::Error;
@@ -105,6 +106,69 @@ mod tests {
     fn valid_sitekey_key_is_valid() {
         let sitekey = mockd::unique::uuid_v4();
 
+        assert_ok!(Sitekey::parse(sitekey));
+    }
+}
+
+#[cfg(feature = "recaptcha")]
+#[cfg(test)]
+mod recaptcha_tests {
+    use super::{Code, Sitekey};
+    use crate::Error;
+    use claims::{assert_err, assert_ok};
+
+    #[test]
+    fn whitespace_only_sitekeys_are_rejected() {
+        let sitekey = " ".to_string();
+        assert_err!(Sitekey::parse(sitekey));
+    }
+
+    #[test]
+    fn empty_string_is_rejected() {
+        let sitekey = "".to_string();
+        assert_err!(Sitekey::parse(sitekey));
+    }
+
+    #[test]
+    fn error_set_contains_missing_sitekey_error() {
+        let sitekey = "".to_string();
+        if let Err(Error::Codes(hs)) = Sitekey::parse(sitekey) {
+            assert!(hs.contains(&Code::MissingSiteKey));
+        }
+    }
+
+    #[test]
+    fn error_set_contains_invalid_sitekey_error() {
+        let sitekey = "invalid-key".to_string();
+        let res = Sitekey::parse(sitekey);
+        assert_err!(&res);
+
+        if let Err(Error::Codes(hs)) = res {
+            assert!(hs.contains(&Code::InvalidSiteKey));
+        }
+    }
+
+    #[test]
+    fn sitekey_with_invalid_characters_is_rejected() {
+        let sitekey = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ@MXjiZK!I".to_string();
+        assert_err!(Sitekey::parse(sitekey));
+    }
+
+    #[test]
+    fn sitekey_with_wrong_length_is_rejected() {
+        let sitekey = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI123".to_string();
+        assert_err!(Sitekey::parse(sitekey));
+    }
+
+    #[test]
+    fn valid_sitekey_is_valid() {
+        let sitekey = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI".to_string();
+        assert_ok!(Sitekey::parse(sitekey));
+    }
+
+    #[test]
+    fn another_valid_sitekey_is_valid() {
+        let sitekey = "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe".to_string();
         assert_ok!(Sitekey::parse(sitekey));
     }
 }

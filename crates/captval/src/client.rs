@@ -58,15 +58,28 @@
 // const RESET: &str = "\u{001b}[0m";
 
 use crate::Error;
+use crate::Form;
 use crate::Request;
 use crate::Response;
 use reqwest::Url;
 // #[cfg(target_arch = "wasm32")]
 // use tokio::runtime;
 
-mod form;
-
-use form::Form;
+/// Returns the default verification URL based on enabled features
+fn default_verify_url() -> &'static str {
+    #[cfg(feature = "hcaptcha")]
+    {
+        crate::hcaptcha::VERIFY_URL
+    }
+    #[cfg(all(feature = "recaptcha", not(feature = "hcaptcha")))]
+    {
+        crate::recaptcha::VERIFY_URL
+    }
+    #[cfg(not(any(feature = "hcaptcha", feature = "recaptcha")))]
+    {
+        compile_error!("At least one of 'hcaptcha' or 'recaptcha' features must be enabled")
+    }
+}
 
 /// Client to submit a request to a Captval validation endpoint.
 #[cfg_attr(docsrs, allow(rustdoc::missing_doc_code_examples))]
@@ -74,7 +87,7 @@ use form::Form;
 pub struct Client {
     /// HTTP Client to submit request to endpoint and read the response.
     client: reqwest::Client,
-    /// Url for the endpoint.
+    /// Captcha endpoint to submit request to.
     url: Url,
 }
 
@@ -105,7 +118,7 @@ impl Client {
     pub fn new() -> Client {
         Client {
             client: reqwest::Client::new(),
-            url: Url::parse(crate::VERIFY_URL).expect("API url string corrupt"),
+            url: Url::parse(default_verify_url()).expect("API url string corrupt"),
         }
     }
 
@@ -555,7 +568,7 @@ mod tests {
         let client = Client::default();
         // Here we would check the side effect or state change
         // For example, if new() sets a specific field, we would assert that field's value
-        let expected_value = Url::parse(crate::VERIFY_URL).unwrap();
+        let expected_value = Url::parse(default_verify_url()).unwrap();
         assert!(client.url == expected_value);
     }
 

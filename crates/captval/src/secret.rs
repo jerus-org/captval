@@ -30,10 +30,51 @@ impl Secret {
     }
 }
 
+#[cfg(feature = "hcaptcha")]
 #[cfg(test)]
-mod tests {
-    use super::{Code, Secret};
+mod hcaptcha_tests {
+    use super::Secret;
+    use crate::Code;
     use crate::Error;
+    use claims::{assert_err, assert_ok};
+
+    #[test]
+    fn whitespace_only_secrets_are_rejected() {
+        let secret = " ".to_string();
+        assert_err!(Secret::parse(secret));
+    }
+    #[test]
+    fn empty_string_is_rejected() {
+        let secret = "".to_string();
+        assert_err!(Secret::parse(secret));
+    }
+
+    #[test]
+    fn error_set_contains_missing_secret_error() {
+        let secret = "".to_string();
+        if let Err(Error::Codes(hs)) = Secret::parse(secret) {
+            assert!(hs.contains(&Code::MissingSecret));
+        }
+    }
+
+    #[test]
+    fn test_v1_secret_key_is_valid() {
+        let secret = "0x0000000123456789abcdefABCDEF000000000000".to_string();
+        assert_ok!(Secret::parse(secret));
+    }
+
+    // A second format of secret is being issued since September 2023
+    #[test]
+    fn test_v2_secret_key_is_valid() {
+        let secret = "ES_a5e0b5406e2b4c939ce48946389463894638473b1c".to_string();
+        assert_ok!(Secret::parse(secret));
+    }
+}
+
+#[cfg(feature = "recaptcha")]
+#[cfg(test)]
+mod recaptcha_tests {
+    use crate::{Code, Error, Secret};
     use claims::{assert_err, assert_ok};
 
     #[test]
