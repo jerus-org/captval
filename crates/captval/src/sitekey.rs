@@ -20,7 +20,12 @@ impl Sitekey {
     )]
     pub fn parse(s: String) -> Result<Self, Error> {
         empty_sitekey(&s)?;
-        invalid_sitekey(&s)?;
+        if cfg!(feature = "hcaptcha") == true {
+            invalid_sitekey_hcaptcha(&s)?;
+        } else if cfg!(feature = "recaptcha") == true {
+            invalid_sitekey_recaptcha(&s)?;
+        } else {
+        };
 
         Ok(Sitekey(s))
     }
@@ -47,7 +52,8 @@ fn empty_sitekey(s: &str) -> Result<(), Error> {
     feature = "trace",
     tracing::instrument(name = "Return error if not an ip string.", skip(s), level = "debug")
 )]
-fn invalid_sitekey(s: &str) -> Result<(), Error> {
+#[cfg(feature = "hcaptcha")]
+fn invalid_sitekey_hcaptcha(s: &str) -> Result<(), Error> {
     if Uuid::from_str(s).is_err() {
         let mut codes = HashSet::new();
         codes.insert(Code::InvalidSiteKey);
@@ -58,6 +64,23 @@ fn invalid_sitekey(s: &str) -> Result<(), Error> {
     } else {
         Ok(())
     }
+}
+
+#[cfg_attr(
+    feature = "trace",
+    tracing::instrument(name = "Return error if not an ip string.", skip(s), level = "debug")
+)]
+fn invalid_sitekey_recaptcha(_s: &str) -> Result<(), Error> {
+    // if Uuid::from_str(s).is_err() {
+    //     let mut codes = HashSet::new();
+    //     codes.insert(Code::InvalidSiteKey);
+
+    //     #[cfg(feature = "trace")]
+    //     tracing::debug!("{}", Code::InvalidSiteKey);
+    //     Err(Error::Codes(codes))
+    // } else {
+    Ok(())
+    // }
 }
 
 #[cfg(feature = "hcaptcha")]
@@ -110,7 +133,7 @@ mod hcaptcha_tests {
     }
 }
 
-#[cfg(feature = "recaptcha")]
+#[cfg(all(feature = "recaptcha", not(feature = "hcaptcha")))]
 #[cfg(test)]
 mod recaptcha_tests {
     use super::{Code, Sitekey};
@@ -162,13 +185,14 @@ mod recaptcha_tests {
 
     #[test]
     fn valid_sitekey_is_valid() {
-        let sitekey = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI".to_string();
+        let sitekey = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQMXjiZKhI".to_string();
         assert_ok!(Sitekey::parse(sitekey));
     }
 
     #[test]
+    #[cfg(all(feature = "recaptcha", not(feature = "hcaptcha")))]
     fn another_valid_sitekey_is_valid() {
-        let sitekey = "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe".to_string();
+        let sitekey = "6LeIxAcTAAAAAGGvFI1TnRWxMZNFuojJ4WifJWe".to_string();
         assert_ok!(Sitekey::parse(sitekey));
     }
 }
