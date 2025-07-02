@@ -84,10 +84,13 @@ workflows:
                 - main
       - toolkit/required_builds:
           min_rust_version: << pipeline.parameters.min-rust-version >>
+          cargo_all_features: false
       - toolkit/optional_builds:
           min_rust_version: << pipeline.parameters.min-rust-version >>
+          cargo_all_features: false
       - toolkit/common_tests:
           min_rust_version: << pipeline.parameters.min-rust-version >>
+          cargo_all_features: false
       - toolkit/idiomatic_rust:
           min_rust_version: << pipeline.parameters.min-rust-version >>
       - toolkit/security:
