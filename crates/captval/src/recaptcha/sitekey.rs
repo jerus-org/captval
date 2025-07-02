@@ -1,5 +1,5 @@
-use crate::{Error};
 use crate::Code;
+use crate::Error;
 use std::collections::HashSet;
 use std::fmt;
 
@@ -44,13 +44,19 @@ fn empty_sitekey(s: &str) -> Result<(), Error> {
 
 #[cfg_attr(
     feature = "trace",
-    tracing::instrument(name = "Return error if not a valid sitekey string.", skip(s), level = "debug")
+    tracing::instrument(
+        name = "Return error if not a valid sitekey string.",
+        skip(s),
+        level = "debug"
+    )
 )]
 fn invalid_sitekey(s: &str) -> Result<(), Error> {
     // Google reCAPTCHA site keys are 40 characters long and base64url encoded
     let is_valid_length = s.len() == 40;
-    let is_base64url_like = s.chars().all(|c| c.is_alphanumeric() || c == '-' || c == '_');
-    
+    let is_base64url_like = s
+        .chars()
+        .all(|c| c.is_alphanumeric() || c == '-' || c == '_');
+
     if !is_valid_length || !is_base64url_like {
         let mut codes = HashSet::new();
         codes.insert(Code::InvalidSiteKey);
@@ -65,7 +71,7 @@ fn invalid_sitekey(s: &str) -> Result<(), Error> {
 
 #[cfg(test)]
 mod tests {
-    use super::{Sitekey, Code};
+    use super::{Code, Sitekey};
     use crate::Error;
     use claims::{assert_err, assert_ok};
 

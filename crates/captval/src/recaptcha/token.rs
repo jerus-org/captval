@@ -1,5 +1,5 @@
-use crate::{Error};
 use crate::Code;
+use crate::Error;
 use std::collections::HashSet;
 use std::fmt;
 
@@ -31,7 +31,7 @@ impl fmt::Display for Token {
 
 #[cfg(test)]
 mod tests {
-    use super::{Token, Code};
+    use super::{Code, Token};
     use crate::Error;
     use claims::assert_err;
 
