@@ -28,8 +28,9 @@ impl fmt::Display for Token {
     }
 }
 
+#[cfg(feature = "hcaptcha")]
 #[cfg(test)]
-mod tests {
+mod hcaptcha_tests {
     use super::Token;
     use crate::Code;
     use crate::Error;
@@ -60,5 +61,48 @@ mod tests {
     fn test_as_str() {
         let response = Token("test_response".to_string());
         assert_eq!(response.as_str(), "test_response");
+    }
+}
+
+#[cfg(feature = "recaptcha")]
+#[cfg(test)]
+mod recaptcha_tests {
+    use super::{Code, Token};
+    use crate::Error;
+    use claims::assert_err;
+
+    #[test]
+    fn whitespace_only_names_are_rejected() {
+        let response = " ".to_string();
+        assert_err!(Token::parse(response));
+    }
+
+    #[test]
+    fn empty_string_is_rejected() {
+        let response = "".to_string();
+        assert_err!(Token::parse(response));
+    }
+
+    #[test]
+    fn error_set_contains_missing_response_error() {
+        let response = "".to_string();
+
+        if let Err(Error::Codes(hs)) = Token::parse(response) {
+            assert!(hs.contains(&Code::MissingResponse));
+        }
+    }
+
+    #[test]
+    fn test_as_str() {
+        let response = Token("test_response".to_string());
+        assert_eq!(response.as_str(), "test_response");
+    }
+
+    #[test]
+    fn valid_token_is_accepted() {
+        let token = "03AGdBq25SiUFR_j4TdKKe-P8CRjRz5uVwPB8Vwh123ABC".to_string();
+        let result = Token::parse(token.clone());
+        assert!(result.is_ok());
+        assert_eq!(result.unwrap().as_str(), token);
     }
 }

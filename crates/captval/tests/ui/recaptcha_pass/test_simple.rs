@@ -1,33 +1,25 @@
 mod helper;
 
+use captval::Captval;
 use chrono::{TimeDelta, Utc};
-use captval::{Code, Captval};
+use claims::assert_ok;
 use serde_json::json;
 use wiremock::matchers::{body_string, method, path};
 use wiremock::{Mock, MockServer, ResponseTemplate};
 
-#[derive(Debug, Captval)]
+#[derive(Captval)]
 struct Test {
     #[captcha]
     captval: String,
-    #[sitekey]
-    sitekey: String,
-    #[remoteip]
-    ip: String,
 }
 
 #[tokio::main]
 async fn main() {
     // Setup
     let token = helper::random_string(100);
-    let remoteip = mockd::internet::ipv4_address();
-    let sitekey = mockd::unique::uuid_v4();
-    let secret = "0xInvalidSecretString".to_string();
+    let secret = format!("0x{}", hex::encode(helper::random_string(20)));
 
-    let expected_body = format!(
-        "response={}&remoteip={}&sitekey={}&secret={}",
-        &token, &remoteip, &sitekey, &secret
-    );
+    let expected_body = format!("response={}&secret={}", &token, &secret);
 
     let timestamp = Utc::now()
         .checked_sub_signed(TimeDelta::try_minutes(10).unwrap())
@@ -50,23 +42,11 @@ async fn main() {
 
     let uri = format!("{}{}", mock_server.uri(), "/siteverify");
 
-    let form = Test {
-        captval: token,
-        sitekey,
-        ip: remoteip,
-    };
+    let form = Test { captval: token };
     let response = form.valid_response(&secret, Some(uri)).await;
 
-    claims::assert_err!(&response);
-
-    if let Err(codes) = response {
-        match codes {
-            captval::Error::Codes(hash_set) => {
-                assert_eq!(hash_set.len(), 2);
-                assert!(hash_set.contains(&Code::InvalidSecretExtNotHex));
-                assert!(hash_set.contains(&Code::InvalidSecretExtWrongLen));
-            }
-            _ => unreachable!(),
-        }
-    };
+    assert_ok!(&response);
+    let response = response.unwrap();
+    assert!(&response.success());
+    assert_eq!(&response.timestamp().unwrap(), &timestamp);
 }

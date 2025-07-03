@@ -84,10 +84,13 @@ workflows:
                 - main
       - toolkit/required_builds:
           min_rust_version: << pipeline.parameters.min-rust-version >>
+          cargo_all_features: false
       - toolkit/optional_builds:
           min_rust_version: << pipeline.parameters.min-rust-version >>
+          cargo_all_features: false
       - toolkit/common_tests:
           min_rust_version: << pipeline.parameters.min-rust-version >>
+          cargo_all_features: false
       - toolkit/idiomatic_rust:
           min_rust_version: << pipeline.parameters.min-rust-version >>
       - toolkit/security:
@@ -98,11 +101,13 @@ workflows:
             parameters:
               features:
                 [
-                  "-F hcaptcha,ext,rustls-backend",
-                  "-F hcaptcha,ext,rustls-backend,enterprise",
-                  "",
                   "-F hcaptcha,rustls-backend",
-                  "-F hcaptcha,ext,rustls-backend,trace,enterprise",
+                  "-F hcaptcha,nativetls-backend",
+                  "-F hcaptcha,rustls-backend,enterprise",
+                  "",
+                  "-F hcaptcha,rustls-backend,trace,enterprise",
+                  "-F recaptcha,rustls-backend",
+                  "-F recaptcha,nativetls-backend",
                 ]
           requires:
             - toolkit/common_tests
