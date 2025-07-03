@@ -24,8 +24,7 @@ impl Sitekey {
             invalid_sitekey_hcaptcha(&s)?;
         } else if cfg!(feature = "recaptcha") == true {
             invalid_sitekey_recaptcha(&s)?;
-        } else {
-        };
+        }
 
         Ok(Sitekey(s))
     }
@@ -68,7 +67,7 @@ fn invalid_sitekey_hcaptcha(s: &str) -> Result<(), Error> {
 
 #[cfg_attr(
     feature = "trace",
-    tracing::instrument(name = "Return error if not an ip string.", skip(s), level = "debug")
+    tracing::instrument(name = "Return error if not an ip string.", skip(_s), level = "debug")
 )]
 fn invalid_sitekey_recaptcha(_s: &str) -> Result<(), Error> {
     // if Uuid::from_str(s).is_err() {
