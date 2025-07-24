@@ -31,6 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - deps: update rust crate uuid to 1.17.0(pr [#71])
 - deps: update rust crate mockd to 0.4.50(pr [#79])
 - deps: update rust crate lambda_runtime to 0.14.3(pr [#78])
+- deps: update rust crate rand to 0.9.2(pr [#80])
 
 ## [0.1.2] - 2025-05-15
 
@@ -184,6 +185,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#77]: https://github.com/jerus-org/captval/pull/77
 [#79]: https://github.com/jerus-org/captval/pull/79
 [#78]: https://github.com/jerus-org/captval/pull/78
+[#80]: https://github.com/jerus-org/captval/pull/80
 [Unreleased]: https://github.com/jerus-org/captval/compare/v0.1.2...HEAD
 [0.1.2]: https://github.com/jerus-org/captval/compare/v0.1.0...v0.1.2
 [0.1.0]: https://github.com/jerus-org/captval/releases/tag/v0.1.0
