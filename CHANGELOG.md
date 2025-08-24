@@ -46,6 +46,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - deps: update rust crate trybuild to 1.0.110(pr [#92])
 - deps: update rust crate url to 2.5.7(pr [#93])
 - deps: update rust crate macrotest to 1.2.0(pr [#94])
+- deps: update rust crate tokio to 1.47.1(pr [#95])
 
 ## [0.1.2] - 2025-05-15
 
@@ -214,6 +215,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#92]: https://github.com/jerus-org/captval/pull/92
 [#93]: https://github.com/jerus-org/captval/pull/93
 [#94]: https://github.com/jerus-org/captval/pull/94
+[#95]: https://github.com/jerus-org/captval/pull/95
 [Unreleased]: https://github.com/jerus-org/captval/compare/v0.1.2...HEAD
 [0.1.2]: https://github.com/jerus-org/captval/compare/v0.1.0...v0.1.2
 [0.1.0]: https://github.com/jerus-org/captval/releases/tag/v0.1.0
