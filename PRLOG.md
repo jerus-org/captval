@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ♻️ refactor(captcha)-rename ClientResponse to Token(pr [#74])
 - ♻️ refactor(hcaptcha)-rename client_response to token module(pr [#75])
 - 🔧 chore(renovate)-simplify renovate configuration(pr [#77])
+- chore-rename CHANGELOG.md to PRLOG.md(pr [#97])
 
 ### Fixed
 
@@ -218,6 +219,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#94]: https://github.com/jerus-org/captval/pull/94
 [#95]: https://github.com/jerus-org/captval/pull/95
 [#96]: https://github.com/jerus-org/captval/pull/96
+[#97]: https://github.com/jerus-org/captval/pull/97
 [Unreleased]: https://github.com/jerus-org/captval/compare/v0.1.2...HEAD
 [0.1.2]: https://github.com/jerus-org/captval/compare/v0.1.0...v0.1.2
 [0.1.0]: https://github.com/jerus-org/captval/releases/tag/v0.1.0
