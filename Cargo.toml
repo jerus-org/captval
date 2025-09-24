@@ -3,7 +3,7 @@ resolver = "2"
 members = ["crates/captval", "crates/captval_derive", "crates/test-wasm"]
 
 [workspace.package]
-rust-version = "1.82"
+rust-version = "1.85"
 edition = "2021"
 publish = false
 
