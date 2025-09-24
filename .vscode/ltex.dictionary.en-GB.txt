@@ -1,0 +1,4 @@
+captval
+BuyMeaCoffee
+GitHubSponsors
+codecov
