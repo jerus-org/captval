@@ -53,6 +53,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - deps: update rust crate lambda_runtime to 0.14.4(pr [#99])
 - deps: update rust crate mockd to 0.4.53(pr [#100])
 - deps: update rust crate tracing-subscriber to 0.3.20(pr [#101])
+- deps: update rust crate trybuild to 1.0.111(pr [#102])
 
 ## [0.1.2] - 2025-05-15
 
@@ -228,6 +229,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#99]: https://github.com/jerus-org/captval/pull/99
 [#100]: https://github.com/jerus-org/captval/pull/100
 [#101]: https://github.com/jerus-org/captval/pull/101
+[#102]: https://github.com/jerus-org/captval/pull/102
 [Unreleased]: https://github.com/jerus-org/captval/compare/v0.1.2...HEAD
 [0.1.2]: https://github.com/jerus-org/captval/compare/v0.1.0...v0.1.2
 [0.1.0]: https://github.com/jerus-org/captval/releases/tag/v0.1.0
