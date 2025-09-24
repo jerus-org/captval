@@ -321,7 +321,7 @@
 //!
 //! ## Rust Version
 //!
-//! This version of captval requires Rust v1.85 or later.
+//! This version of captval requires Rust v1.88 or later.
 
 mod captcha;
 mod captval;
