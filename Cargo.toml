@@ -29,7 +29,7 @@ uuid = "1.17.0"
 wasm-bindgen = "0.2.100"
 wasm-bindgen-futures = "0.4.50"
 
-chrono = "0.4.41"
+chrono = "0.4.42"
 claims = "0.8.0"
 lambda_runtime = "0.14.3"
 macrotest = "1.2.0"
