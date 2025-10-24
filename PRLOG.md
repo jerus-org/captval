@@ -68,6 +68,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - deps: update rust crate thiserror to 2.0.17(pr [#114])
 - deps: update rust crate trybuild to 1.0.112(pr [#115])
 - deps: update rust crate wasm-bindgen to 0.2.104(pr [#116])
+- deps: update rust crate wasm-bindgen-futures to 0.4.54(pr [#117])
 
 ## [0.1.2] - 2025-05-15
 
@@ -258,6 +259,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#114]: https://github.com/jerus-org/captval/pull/114
 [#115]: https://github.com/jerus-org/captval/pull/115
 [#116]: https://github.com/jerus-org/captval/pull/116
+[#117]: https://github.com/jerus-org/captval/pull/117
 [Unreleased]: https://github.com/jerus-org/captval/compare/v0.1.2...HEAD
 [0.1.2]: https://github.com/jerus-org/captval/compare/v0.1.0...v0.1.2
 [0.1.0]: https://github.com/jerus-org/captval/releases/tag/v0.1.0
