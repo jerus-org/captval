@@ -44,7 +44,7 @@ tracing-subscriber = "0.3.20"
 tracing-test = "0.2.5"
 trybuild = "1.0.114"
 wiremock = "0.6.5"
-wasm-bindgen-test = "0.3.53"
+wasm-bindgen-test = "0.3.55"
 
 [profile.release]
 opt-level = "s"
