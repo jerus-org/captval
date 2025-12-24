@@ -83,6 +83,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - deps: update rust crate mockd to 0.4.56(pr [#128])
 - deps: update rust crate reqwest to 0.12.28(pr [#129])
 - deps: update rust crate serde_json to 1.0.147(pr [#130])
+- deps: update rust crate wasm-bindgen to 0.2.106(pr [#131])
 
 ## [0.1.2] - 2025-05-15
 
@@ -288,6 +289,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#128]: https://github.com/jerus-org/captval/pull/128
 [#129]: https://github.com/jerus-org/captval/pull/129
 [#130]: https://github.com/jerus-org/captval/pull/130
+[#131]: https://github.com/jerus-org/captval/pull/131
 [Unreleased]: https://github.com/jerus-org/captval/compare/v0.1.2...HEAD
 [0.1.2]: https://github.com/jerus-org/captval/compare/v0.1.0...v0.1.2
 [0.1.0]: https://github.com/jerus-org/captval/releases/tag/v0.1.0
