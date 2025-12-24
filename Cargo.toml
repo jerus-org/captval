@@ -26,7 +26,7 @@ thiserror = "2.0.17"
 tracing = "0.1.41"
 url = "2.5.7"
 uuid = "1.18.1"
-wasm-bindgen = "0.2.105"
+wasm-bindgen = "0.2.106"
 wasm-bindgen-futures = "0.4.55"
 
 chrono = "0.4.42"
